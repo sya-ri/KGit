@@ -5,6 +5,7 @@ import com.github.syari.kgit.api.KCommitCommand
 import com.github.syari.kgit.api.KInitCommand
 import com.github.syari.kgit.api.KLogCommand
 import com.github.syari.kgit.api.KLsRemoteCommand
+import com.github.syari.kgit.api.KMergeCommand
 import org.eclipse.jgit.api.Git
 import org.eclipse.jgit.lib.Repository
 import org.eclipse.jgit.util.FS
@@ -57,4 +58,9 @@ class KGit(private val asJ: Git) {
      * @see Git.log
      */
     fun log(action: KLogCommand.() -> Unit = {}) = KLogCommand(asJ.log()).apply(action).call()
+
+    /**
+     * @see Git.merge
+     */
+    fun merge(action: KMergeCommand.() -> Unit = {}) = KMergeCommand(asJ.merge()).apply(action).call()
 }
