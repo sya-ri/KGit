@@ -6,6 +6,7 @@ import com.github.syari.kgit.api.KInitCommand
 import com.github.syari.kgit.api.KLogCommand
 import com.github.syari.kgit.api.KLsRemoteCommand
 import com.github.syari.kgit.api.KMergeCommand
+import com.github.syari.kgit.api.KPullCommand
 import org.eclipse.jgit.api.Git
 import org.eclipse.jgit.lib.Repository
 import org.eclipse.jgit.util.FS
@@ -63,4 +64,9 @@ class KGit(private val asJ: Git) {
      * @see Git.merge
      */
     fun merge(action: KMergeCommand.() -> Unit = {}) = KMergeCommand(asJ.merge()).apply(action).call()
+
+    /**
+     * @see Git.pull
+     */
+    fun pull(action: KPullCommand.() -> Unit = {}) = KPullCommand(asJ.pull()).apply(action).call()
 }
