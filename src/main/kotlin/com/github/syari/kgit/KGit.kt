@@ -15,7 +15,7 @@ import java.io.File
 /**
  * @see Git
  */
-class KGit(private val asJ: Git) {
+class KGit(private val asJ: Git): AutoCloseable {
     companion object {
         /**
          * @see Git.open
@@ -49,6 +49,11 @@ class KGit(private val asJ: Git) {
     }
 
     constructor(repo: Repository): this(Git(repo))
+
+    /**
+     * @see Git.close
+     */
+    override fun close() = asJ.close()
 
     /**
      * @see Git.commit
