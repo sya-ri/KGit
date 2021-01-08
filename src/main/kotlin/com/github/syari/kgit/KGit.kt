@@ -1,6 +1,7 @@
 package com.github.syari.kgit
 
 import com.github.syari.kgit.api.KCloneCommand
+import com.github.syari.kgit.api.KCommitCommand
 import com.github.syari.kgit.api.KInitCommand
 import com.github.syari.kgit.api.KLsRemoteCommand
 import org.eclipse.jgit.api.Git
@@ -45,4 +46,9 @@ class KGit(private val asJ: Git) {
     }
 
     constructor(repo: Repository): this(Git(repo))
+
+    /**
+     * @see Git.commit
+     */
+    fun commit(action: KCommitCommand.() -> Unit = {}) = KCommitCommand(asJ.commit()).apply(action).call()
 }
