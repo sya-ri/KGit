@@ -5,6 +5,9 @@ import org.eclipse.jgit.lib.Constants
 import org.eclipse.jgit.lib.Ref
 import org.eclipse.jgit.lib.Repository
 
+/**
+ * @see LsRemoteCommand
+ */
 class KLsRemoteCommand(private val asJ: LsRemoteCommand) {
     constructor(repo: Repository? = null): this(LsRemoteCommand(repo))
 

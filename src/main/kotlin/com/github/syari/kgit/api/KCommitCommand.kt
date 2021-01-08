@@ -6,6 +6,9 @@ import org.eclipse.jgit.revwalk.RevCommit
 import org.eclipse.jgit.transport.CredentialsProvider
 import java.io.PrintStream
 
+/**
+ * @see CommitCommand
+ */
 class KCommitCommand(private val asJ: CommitCommand) {
     /**
      * @see CommitCommand.call

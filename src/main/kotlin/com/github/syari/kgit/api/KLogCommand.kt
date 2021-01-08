@@ -5,6 +5,9 @@ import org.eclipse.jgit.lib.AnyObjectId
 import org.eclipse.jgit.revwalk.RevCommit
 import org.eclipse.jgit.revwalk.filter.RevFilter
 
+/**
+ * @see LogCommand
+ */
 class KLogCommand(private val asJ: LogCommand) {
     /**
      * @see LogCommand.call
