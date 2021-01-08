@@ -12,7 +12,7 @@ import java.io.File
 /**
  * @see CloneCommand
  */
-class KCloneCommand(val asJ: CloneCommand = CloneCommand()) {
+class KCloneCommand(private val asJ: CloneCommand = CloneCommand()) {
     /**
      * @see CloneCommand.call
      */
