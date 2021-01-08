@@ -1,4 +1,4 @@
-package com.github.syari.kgit.api
+package com.github.syari.kgit
 
 import org.eclipse.jgit.api.LogCommand
 import org.eclipse.jgit.lib.AnyObjectId

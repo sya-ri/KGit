@@ -1,4 +1,4 @@
-package com.github.syari.kgit.api
+package com.github.syari.kgit
 
 import org.eclipse.jgit.api.MergeCommand
 import org.eclipse.jgit.api.MergeResult

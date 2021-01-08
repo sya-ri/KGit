@@ -1,6 +1,5 @@
-package com.github.syari.kgit.api
+package com.github.syari.kgit
 
-import com.github.syari.kgit.KGit
 import org.eclipse.jgit.api.CloneCommand
 import org.eclipse.jgit.lib.Constants
 import org.eclipse.jgit.lib.NullProgressMonitor
