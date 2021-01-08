@@ -1,5 +1,5 @@
 # KGit
-KGit is JGit Kotlin wrapper library.
+KGit is [JGit](https://github.com/eclipse/jgit) Kotlin wrapper library.
 
 ## Develop
 
