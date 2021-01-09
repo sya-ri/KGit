@@ -97,4 +97,9 @@ class KGit(private val asJ: Git): AutoCloseable {
      * @see Git.add
      */
     fun add(action: KAddCommand.() -> Unit = {}) = KAddCommand(asJ.add()).apply(action).call()
+
+    /**
+     * @see Git.tag
+     */
+    fun tag(action: KTagCommand.() -> Unit = {}) = KTagCommand(asJ.tag()).apply(action).call()
 }
