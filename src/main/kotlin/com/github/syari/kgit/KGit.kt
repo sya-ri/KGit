@@ -82,4 +82,9 @@ class KGit(private val asJ: Git): AutoCloseable {
      * @see Git.branchList
      */
     fun branchList(action: KListBranchCommand.() -> Unit = {}) = KListBranchCommand(asJ.branchList()).apply(action).call()
+
+    /**
+     * @see Git.tagList
+     */
+    fun tagList(action: KListTagCommand.() -> Unit = {}) = KListTagCommand(asJ.tagList()).apply(action).call()
 }
