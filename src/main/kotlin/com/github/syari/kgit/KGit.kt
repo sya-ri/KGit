@@ -77,4 +77,9 @@ class KGit(private val asJ: Git): AutoCloseable {
      * @see Git.branchDelete
      */
     fun branchDelete(action: KDeleteBranchCommand.() -> Unit = {}) = KDeleteBranchCommand(asJ.branchDelete()).apply(action).call()
+
+    /**
+     * @see Git.branchList
+     */
+    fun branchList(action: KListBranchCommand.() -> Unit = {}) = KListBranchCommand(asJ.branchList()).apply(action).call()
 }
