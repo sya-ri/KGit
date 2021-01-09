@@ -67,4 +67,9 @@ class KGit(private val asJ: Git): AutoCloseable {
      * @see Git.pull
      */
     fun pull(action: KPullCommand.() -> Unit = {}) = KPullCommand(asJ.pull()).apply(action).call()
+
+    /**
+     * @see Git.branchCreate
+     */
+    fun branchCreate(action: KCreateBranchCommand.() -> Unit = {}) = KCreateBranchCommand(asJ.branchCreate()).apply(action).call()
 }
