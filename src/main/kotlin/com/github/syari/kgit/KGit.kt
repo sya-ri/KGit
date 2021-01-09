@@ -92,4 +92,9 @@ class KGit(private val asJ: Git): AutoCloseable {
      * @see Git.branchRename
      */
     fun branchRename(action: KRenameBranchCommand.() -> Unit = {}) = KRenameBranchCommand(asJ.branchRename()).apply(action).call()
+
+    /**
+     * @see Git.add
+     */
+    fun add(action: KAddCommand.() -> Unit = {}) = KAddCommand(asJ.add()).apply(action).call()
 }
