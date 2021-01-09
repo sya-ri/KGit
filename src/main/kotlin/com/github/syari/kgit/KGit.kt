@@ -102,4 +102,9 @@ class KGit(private val asJ: Git): AutoCloseable {
      * @see Git.tag
      */
     fun tag(action: KTagCommand.() -> Unit = {}) = KTagCommand(asJ.tag()).apply(action).call()
+
+    /**
+     * @see Git.fetch
+     */
+    fun fetch(action: KFetchCommand.() -> Unit = {}) = KFetchCommand(asJ.fetch()).apply(action).call()
 }
