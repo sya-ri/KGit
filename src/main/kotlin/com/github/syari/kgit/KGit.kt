@@ -112,4 +112,9 @@ class KGit(private val asJ: Git): AutoCloseable {
      * @see Git.push
      */
     fun push(action: KPushCommand.() -> Unit = {}) = KPushCommand(asJ.push()).apply(action).call()
+
+    /**
+     * @see Git.cherryPick
+     */
+    fun cherryPick(action: KCherryPickCommand.() -> Unit = {}) = KCherryPickCommand(asJ.cherryPick()).apply(action).call()
 }
