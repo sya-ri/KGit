@@ -122,4 +122,9 @@ class KGit(private val asJ: Git): AutoCloseable {
      * @see Git.revert
      */
     fun revert(action: KRevertCommand.() -> Unit = {}) = KRevertCommand(asJ.revert()).apply(action).call()
+
+    /**
+     * @see Git.rebase
+     */
+    fun rebase(action: KRebaseCommand.() -> Unit = {}) = KRebaseCommand(asJ.rebase()).apply(action).call()
 }
