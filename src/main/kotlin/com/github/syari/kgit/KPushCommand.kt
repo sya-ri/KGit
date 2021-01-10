@@ -11,7 +11,7 @@ import java.io.OutputStream
 /**
  * @see PushCommand
  */
-class KPushCommand(asJ: PushCommand): KGitCommand<PushCommand, Iterable<PushResult>>(asJ) {
+class KPushCommand(asJ: PushCommand): KTransportCommand<PushCommand, Iterable<PushResult>>(asJ) {
     /**
      * @see PushCommand.setRemote
      * @see PushCommand.getRemote
@@ -25,10 +25,9 @@ class KPushCommand(asJ: PushCommand): KGitCommand<PushCommand, Iterable<PushResu
     var receivePack: String by asJ::receivePack
 
     /**
-     * @see PushCommand.setTimeout
      * @see PushCommand.getTimeout
      */
-    var timeout: Int by asJ::timeout
+    val timeout: Int by asJ::timeout
 
     /**
      * @see PushCommand.setProgressMonitor

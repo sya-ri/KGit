@@ -10,7 +10,7 @@ import org.eclipse.jgit.transport.TagOpt
 /**
  * @see FetchCommand
  */
-class KFetchCommand(asJ: FetchCommand): KGitCommand<FetchCommand, FetchResult>(asJ) {
+class KFetchCommand(asJ: FetchCommand): KTransportCommand<FetchCommand, FetchResult>(asJ) {
     /**
      * @see FetchCommand.setRecurseSubmodules
      */
@@ -26,9 +26,8 @@ class KFetchCommand(asJ: FetchCommand): KGitCommand<FetchCommand, FetchResult>(a
 
     /**
      * @see FetchCommand.getTimeout
-     * @see FetchCommand.setTimeout
      */
-    var timeout: Int by asJ::timeout
+    val timeout: Int by asJ::timeout
 
     /**
      * @see FetchCommand.setCheckFetchedObjects

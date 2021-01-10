@@ -7,7 +7,7 @@ import org.eclipse.jgit.lib.Repository
 /**
  * @see LsRemoteCommand
  */
-class KLsRemoteCommand(asJ: LsRemoteCommand): KGitCommand<LsRemoteCommand, Collection<Ref>>(asJ) {
+class KLsRemoteCommand(asJ: LsRemoteCommand): KTransportCommand<LsRemoteCommand, Collection<Ref>>(asJ) {
     constructor(repo: Repository? = null): this(LsRemoteCommand(repo))
 
     /**
