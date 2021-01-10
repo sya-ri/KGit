@@ -147,4 +147,9 @@ class KGit(private val asJ: Git): AutoCloseable {
      * @see Git.status
      */
     fun status(action: KStatusCommand.() -> Unit = {}) = KStatusCommand(asJ.status()).apply(action).call()
+
+    /**
+     * @see Git.archive
+     */
+    fun archive(action: KArchiveCommand.() -> Unit = {}) = KArchiveCommand(asJ.archive()).apply(action).call()
 }
