@@ -30,7 +30,7 @@ class KTagCommand(private val asJ: TagCommand) {
      * @see TagCommand.setSigned
      * @see TagCommand.isSigned
      */
-    var signed: Boolean
+    var isSigned: Boolean
         set(value) {
             asJ.isSigned = value
         }
@@ -52,7 +52,7 @@ class KTagCommand(private val asJ: TagCommand) {
      * @see TagCommand.setForceUpdate
      * @see TagCommand.isForceUpdate
      */
-    var forceUpdate: Boolean
+    var isForceUpdate: Boolean
         set(value) {
             asJ.isForceUpdate = value
         }
@@ -62,7 +62,7 @@ class KTagCommand(private val asJ: TagCommand) {
      * @see TagCommand.setAnnotated
      * @see TagCommand.isAnnotated
      */
-    var annotated: Boolean
+    var isAnnotated: Boolean
         set(value) {
             asJ.isAnnotated = value
         }

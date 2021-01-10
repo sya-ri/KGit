@@ -24,7 +24,7 @@ class KCreateBranchCommand(private val asJ: CreateBranchCommand) {
     /**
      * @see CreateBranchCommand.setForce
      */
-    var force: Boolean = false
+    var isForce: Boolean = false
         set(value) {
             field = value.apply(asJ::setForce)
         }

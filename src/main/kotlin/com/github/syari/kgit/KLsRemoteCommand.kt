@@ -27,7 +27,7 @@ class KLsRemoteCommand(private val asJ: LsRemoteCommand) {
     /**
      * @see LsRemoteCommand.setHeads
      */
-    var heads: Boolean = false
+    var isHeads: Boolean = false
         set(value) {
             field = value.apply(asJ::setHeads)
         }
@@ -35,7 +35,7 @@ class KLsRemoteCommand(private val asJ: LsRemoteCommand) {
     /**
      * @see LsRemoteCommand.setTags
      */
-    var tags: Boolean = false
+    var isTags: Boolean = false
         set(value) {
             field = value.apply(asJ::setTags)
         }

@@ -40,7 +40,7 @@ class KFetchCommand(private val asJ: FetchCommand) {
      * @see FetchCommand.setCheckFetchedObjects
      * @see FetchCommand.isCheckFetchedObjects
      */
-    var checkFetchedObjects: Boolean
+    var isCheckFetchedObjects: Boolean
         set(value) {
             asJ.isCheckFetchedObjects = value
         }
@@ -50,7 +50,7 @@ class KFetchCommand(private val asJ: FetchCommand) {
      * @see FetchCommand.setRemoveDeletedRefs
      * @see FetchCommand.isRemoveDeletedRefs
      */
-    var removeDeletedRefs: Boolean
+    var isRemoveDeletedRefs: Boolean
         set(value) {
             asJ.isRemoveDeletedRefs = value
         }
@@ -90,7 +90,7 @@ class KFetchCommand(private val asJ: FetchCommand) {
      * @see FetchCommand.setDryRun
      * @see FetchCommand.isDryRun
      */
-    var dryRun: Boolean
+    var isDryRun: Boolean
         set(value) {
             asJ.isDryRun = value
         }
@@ -100,7 +100,7 @@ class KFetchCommand(private val asJ: FetchCommand) {
      * @see FetchCommand.setThin
      * @see FetchCommand.isThin
      */
-    var thin: Boolean
+    var isThin: Boolean
         set(value) {
             asJ.isThin = value
         }
@@ -126,7 +126,7 @@ class KFetchCommand(private val asJ: FetchCommand) {
      * @see FetchCommand.setForceUpdate
      * @see FetchCommand.isForceUpdate
      */
-    var forceUpdate: Boolean
+    var isForceUpdate: Boolean
         set(value) {
             asJ.isForceUpdate = value
         }

@@ -31,7 +31,7 @@ class KAddCommand(private val asJ: AddCommand) {
     /**
      * @see AddCommand.setUpdate
      */
-    var update: Boolean
+    var isUpdate: Boolean
         set(value) {
             value.apply(asJ::setUpdate)
         }

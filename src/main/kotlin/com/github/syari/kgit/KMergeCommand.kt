@@ -46,7 +46,7 @@ class KMergeCommand(private val asJ: MergeCommand) {
     /**
      * @see MergeCommand.setStrategy
      */
-    var squash: Boolean? = null
+    var isSquash: Boolean? = null
         set(value) {
             value?.let { field = it.apply(asJ::setSquash) }
         }
@@ -62,7 +62,7 @@ class KMergeCommand(private val asJ: MergeCommand) {
     /**
      * @see MergeCommand.setCommit
      */
-    var commit: Boolean? = null
+    var isCommit: Boolean? = null
         set(value) {
             value?.let { field = it.apply(asJ::setCommit) }
         }
@@ -78,7 +78,7 @@ class KMergeCommand(private val asJ: MergeCommand) {
     /**
      * @see MergeCommand.setInsertChangeId
      */
-    var insertChangeId: Boolean = false
+    var isInsertChangeId: Boolean = false
         set(value) {
             field = value.apply(asJ::setInsertChangeId)
         }

@@ -22,7 +22,7 @@ class KDeleteBranchCommand(private val asJ: DeleteBranchCommand) {
     /**
      * @see DeleteBranchCommand.setForce
      */
-    var force: Boolean = false
+    var isForce: Boolean = false
         set(value) {
             field = value.apply(asJ::setForce)
         }

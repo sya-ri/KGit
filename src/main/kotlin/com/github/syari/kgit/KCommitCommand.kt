@@ -24,7 +24,7 @@ class KCommitCommand(private val asJ: CommitCommand) {
     /**
      * @see CommitCommand.setAllowEmpty
      */
-    var allowEmpty: Boolean? = null
+    var isAllowEmpty: Boolean? = null
         set(value) {
             value?.let { field = it.apply(asJ::setAllowEmpty) }
         }
@@ -60,7 +60,7 @@ class KCommitCommand(private val asJ: CommitCommand) {
     /**
      * @see CommitCommand.setAll
      */
-    var all: Boolean = false
+    var isAll: Boolean = false
         set(value) {
             field = value.apply(asJ::setAll)
         }
@@ -68,7 +68,7 @@ class KCommitCommand(private val asJ: CommitCommand) {
     /**
      * @see CommitCommand.setAmend
      */
-    var amend: Boolean = false
+    var isAmend: Boolean = false
         set(value) {
             field = value.apply(asJ::setAmend)
         }
@@ -83,7 +83,7 @@ class KCommitCommand(private val asJ: CommitCommand) {
     /**
      * @see CommitCommand.setInsertChangeId
      */
-    var insertChangeId: Boolean = false
+    var isInsertChangeId: Boolean = false
         set(value) {
             field = value.apply(asJ::setInsertChangeId)
         }
@@ -99,7 +99,7 @@ class KCommitCommand(private val asJ: CommitCommand) {
     /**
      * @see CommitCommand.setNoVerify
      */
-    var noVerify: Boolean = false
+    var isNoVerify: Boolean = false
         set(value) {
             field = value.apply(asJ::setNoVerify)
         }
@@ -143,7 +143,7 @@ class KCommitCommand(private val asJ: CommitCommand) {
     /**
      * @see CommitCommand.setSign
      */
-    var sign: Boolean? = null
+    var isSign: Boolean? = null
         set(value) {
             field = value.apply(asJ::setSign)
         }

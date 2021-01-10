@@ -32,7 +32,7 @@ class KInitCommand(private val asJ: InitCommand = InitCommand()) {
     /**
      * @see InitCommand.setBare
      */
-    var bare: Boolean = false
+    var isBare: Boolean = false
         set(value) {
             field = value.apply(asJ::setBare)
         }

@@ -44,7 +44,7 @@ class KCloneCommand(private val asJ: CloneCommand = CloneCommand()) {
     /**
      * @see CloneCommand.setBare
      */
-    var bare: Boolean = false
+    var isBare: Boolean = false
         set(value) {
             field = value.apply(asJ::setBare)
         }
@@ -84,7 +84,7 @@ class KCloneCommand(private val asJ: CloneCommand = CloneCommand()) {
     /**
      * @see CloneCommand.setCloneAllBranches
      */
-    var cloneAllBranches: Boolean = false
+    var isCloneAllBranches: Boolean = false
         set(value) {
             field = value.apply(asJ::setCloneAllBranches)
         }
@@ -92,7 +92,7 @@ class KCloneCommand(private val asJ: CloneCommand = CloneCommand()) {
     /**
      * @see CloneCommand.setMirror
      */
-    var mirror: Boolean = false
+    var isMirror: Boolean = false
         set(value) {
             field = value.apply(asJ::setMirror)
         }
@@ -100,7 +100,7 @@ class KCloneCommand(private val asJ: CloneCommand = CloneCommand()) {
     /**
      * @see CloneCommand.setCloneSubmodules
      */
-    var cloneSubmodules: Boolean = false
+    var isCloneSubmodules: Boolean = false
         set(value) {
             field = value.apply(asJ::setCloneSubmodules)
         }
@@ -124,7 +124,7 @@ class KCloneCommand(private val asJ: CloneCommand = CloneCommand()) {
     /**
      * @see CloneCommand.setNoCheckout
      */
-    var noCheckout: Boolean = false
+    var isNoCheckout: Boolean = false
         set(value) {
             field = value.apply(asJ::setNoCheckout)
         }
