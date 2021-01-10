@@ -152,4 +152,9 @@ class KGit(asJ: Git): AutoCloseable, KWrapper<Git>(asJ) {
      * @see Git.archive
      */
     fun archive(action: KArchiveCommand.() -> Unit = {}) = KArchiveCommand(asJ.archive()).apply(action).call()
+
+    /**
+     * @see Git.getRepository
+     */
+    val repository: Repository by asJ::repository
 }
