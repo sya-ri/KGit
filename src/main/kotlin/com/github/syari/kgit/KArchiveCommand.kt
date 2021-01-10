@@ -16,18 +16,16 @@ class KArchiveCommand(private val asJ: ArchiveCommand) {
     /**
      * @see ArchiveCommand.setTree
      */
-    var tree: ObjectId? = null
-        set(value) {
-            value?.let { field = it.apply(asJ::setTree) }
-        }
+    fun setTree(tree: ObjectId) {
+        asJ.setTree(tree)
+    }
 
     /**
      * @see ArchiveCommand.setPrefix
      */
-    var prefix: String? = null
-        set(value) {
-            field = value.apply(asJ::setPrefix)
-        }
+    fun setPrefix(prefix: String?) {
+        asJ.setPrefix(prefix)
+    }
 
     /**
      * @see ArchiveCommand.setFilename
@@ -53,7 +51,7 @@ class KArchiveCommand(private val asJ: ArchiveCommand) {
     /**
      * @see ArchiveCommand.setPaths
      */
-    fun setPaths(vararg paths: String?) {
+    fun setPaths(vararg paths: String) {
         asJ.setPaths(*paths)
     }
 }

@@ -3,7 +3,6 @@ package com.github.syari.kgit
 import org.eclipse.jgit.api.RebaseCommand
 import org.eclipse.jgit.api.RebaseResult
 import org.eclipse.jgit.lib.AnyObjectId
-import org.eclipse.jgit.lib.NullProgressMonitor
 import org.eclipse.jgit.lib.ProgressMonitor
 import org.eclipse.jgit.merge.MergeStrategy
 import org.eclipse.jgit.revwalk.RevCommit
@@ -26,46 +25,45 @@ class KRebaseCommand(private val asJ: RebaseCommand) {
 
     /**
      * @see RebaseCommand.setUpstream
-     * @see RebaseCommand.setUpstreamName
      */
-    fun setUpstream(upstream: RevCommit, upstreamName: String? = null) {
+    fun setUpstream(upstream: RevCommit) {
         asJ.setUpstream(upstream)
-        upstreamName?.let { asJ.setUpstreamName(it) }
     }
 
     /**
      * @see RebaseCommand.setUpstream
-     * @see RebaseCommand.setUpstreamName
      */
-    fun setUpstream(upstream: AnyObjectId, upstreamName: String? = null) {
+    fun setUpstream(upstream: AnyObjectId) {
         asJ.setUpstream(upstream)
-        upstreamName?.let { asJ.setUpstreamName(it) }
     }
 
     /**
      * @see RebaseCommand.setUpstream
+     */
+    fun setUpstream(upstream: String) {
+        asJ.setUpstream(upstream)
+    }
+
+    /**
      * @see RebaseCommand.setUpstreamName
      */
-    fun setUpstream(upstream: String, upstreamName: String? = null) {
-        asJ.setUpstream(upstream)
-        upstreamName?.let { asJ.setUpstreamName(it) }
+    fun setUpstreamName(upstreamName: String?) {
+        asJ.setUpstreamName(upstreamName)
     }
 
     /**
      * @see RebaseCommand.setOperation
      */
-    var operation: RebaseCommand.Operation = RebaseCommand.Operation.BEGIN
-        set(value) {
-            field = value.apply(asJ::setOperation)
-        }
+    fun setOperation(operation: RebaseCommand.Operation) {
+        asJ.setOperation(operation)
+    }
 
     /**
      * @see RebaseCommand.setProgressMonitor
      */
-    var progressMonitor: ProgressMonitor = NullProgressMonitor.INSTANCE
-        set(value) {
-            field = value.apply(asJ::setProgressMonitor)
-        }
+    fun setProgressMonitor(monitor: ProgressMonitor?) {
+        asJ.setProgressMonitor(monitor)
+    }
 
     /**
      * @see RebaseCommand.runInteractively
@@ -84,16 +82,14 @@ class KRebaseCommand(private val asJ: RebaseCommand) {
     /**
      * @see RebaseCommand.setStrategy
      */
-    var strategy: MergeStrategy = MergeStrategy.RECURSIVE
-        set(value) {
-            field = value.apply(asJ::setStrategy)
-        }
+    fun setStrategy(strategy: MergeStrategy) {
+        asJ.setStrategy(strategy)
+    }
 
     /**
      * @see RebaseCommand.setPreserveMerges
      */
-    var preserveMerges: Boolean = false
-        set(value) {
-            field = value.apply(asJ::setPreserveMerges)
-        }
+    fun setPreserveMerges(preserve: Boolean) {
+        asJ.setPreserveMerges(preserve)
+    }
 }

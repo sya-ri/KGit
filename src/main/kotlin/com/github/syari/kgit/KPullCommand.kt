@@ -4,7 +4,6 @@ import org.eclipse.jgit.api.MergeCommand
 import org.eclipse.jgit.api.PullCommand
 import org.eclipse.jgit.api.PullResult
 import org.eclipse.jgit.lib.BranchConfig.BranchRebaseMode
-import org.eclipse.jgit.lib.NullProgressMonitor
 import org.eclipse.jgit.lib.ProgressMonitor
 import org.eclipse.jgit.lib.SubmoduleConfig
 import org.eclipse.jgit.merge.MergeStrategy
@@ -22,26 +21,23 @@ class KPullCommand(private val asJ: PullCommand) {
     /**
      * @see PullCommand.setProgressMonitor
      */
-    var progressMonitor: ProgressMonitor = NullProgressMonitor.INSTANCE
-        set(value) {
-            field = value.apply(asJ::setProgressMonitor)
-        }
-
-
-    /**
-     * @see PullCommand.setRebase
-     */
-    fun setRebase(useRebase: Boolean) {
-        rebase = if (useRebase) BranchRebaseMode.REBASE else BranchRebaseMode.NONE
+    fun setProgressMonitor(monitor: ProgressMonitor?) {
+        asJ.setProgressMonitor(monitor)
     }
 
     /**
      * @see PullCommand.setRebase
      */
-    var rebase: BranchRebaseMode? = null
-        set(value) {
-            field = value.apply(asJ::setRebase)
-        }
+    fun setRebase(useRebase: Boolean) {
+        asJ.setRebase(useRebase)
+    }
+
+    /**
+     * @see PullCommand.setRebase
+     */
+    fun setRebase(rebaseMode: BranchRebaseMode?) {
+        asJ.setRebase(rebaseMode)
+    }
 
     /**
      * @see PullCommand.remote
@@ -56,32 +52,28 @@ class KPullCommand(private val asJ: PullCommand) {
     /**
      * @see PullCommand.setStrategy
      */
-    var strategy: MergeStrategy = MergeStrategy.RECURSIVE
-        set(value) {
-            field = value.apply(asJ::setStrategy)
-        }
+    fun setStrategy(strategy: MergeStrategy) {
+        asJ.setStrategy(strategy)
+    }
 
     /**
      * @see PullCommand.setTagOpt
      */
-    var tagOpt: TagOpt? = null
-        set(value) {
-            field = value.apply(asJ::setTagOpt)
-        }
+    fun setTagOpt(tagOpt: TagOpt) {
+        asJ.setTagOpt(tagOpt)
+    }
 
     /**
      * @see PullCommand.setFastForward
      */
-    var fastForward: MergeCommand.FastForwardMode? = null
-        set(value) {
-            field = value.apply(asJ::setFastForward)
-        }
+    fun setFastForward(fastForward: MergeCommand.FastForwardMode?) {
+        asJ.setFastForward(fastForward)
+    }
 
     /**
      * @see PullCommand.setRecurseSubmodules
      */
-    var recurseSubmodules: SubmoduleConfig.FetchRecurseSubmodulesMode? = null
-        set(value) {
-            field = value.apply(asJ::setRecurseSubmodules)
-        }
+    fun setRecurseSubmodules(recurseSubmodules: SubmoduleConfig.FetchRecurseSubmodulesMode?) {
+        asJ.setRecurseSubmodules(recurseSubmodules)
+    }
 }

@@ -138,10 +138,9 @@ class KPushCommand(private val asJ: PushCommand) {
     /**
      * @see PushCommand.setOutputStream
      */
-    var outputStream: OutputStream? = null
-        set(value) {
-            field = value.apply(asJ::setOutputStream)
-        }
+    fun setOutputStream(out: OutputStream?) {
+        asJ.setOutputStream(out)
+    }
 
     /**
      * @see PushCommand.setPushOptions

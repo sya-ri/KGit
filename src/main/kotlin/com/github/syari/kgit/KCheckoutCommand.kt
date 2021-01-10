@@ -2,8 +2,7 @@ package com.github.syari.kgit
 
 import org.eclipse.jgit.api.CheckoutCommand
 import org.eclipse.jgit.api.CheckoutResult
-import org.eclipse.jgit.api.CreateBranchCommand
-import org.eclipse.jgit.lib.NullProgressMonitor
+import org.eclipse.jgit.api.CreateBranchCommand.SetupUpstreamMode
 import org.eclipse.jgit.lib.ProgressMonitor
 import org.eclipse.jgit.lib.Ref
 import org.eclipse.jgit.revwalk.RevCommit
@@ -20,10 +19,9 @@ class KCheckoutCommand(private val asJ: CheckoutCommand) {
     /**
      * @see CheckoutCommand.setProgressMonitor
      */
-    var progressMonitor: ProgressMonitor = NullProgressMonitor.INSTANCE
-        set(value) {
-            field = value.apply(asJ::setProgressMonitor)
-        }
+    fun setProgressMonitor(monitor: ProgressMonitor?) {
+        asJ.setProgressMonitor(monitor)
+    }
 
     /**
      * @see CheckoutCommand.addPath
@@ -42,50 +40,44 @@ class KCheckoutCommand(private val asJ: CheckoutCommand) {
     /**
      * @see CheckoutCommand.setAllPaths
      */
-    var isAllPaths: Boolean = false
-        set(value) {
-            field = value.apply(asJ::setAllPaths)
-        }
+    fun setAllPaths(all: Boolean) {
+        asJ.setAllPaths(all)
+    }
 
     /**
      * @see CheckoutCommand.setName
      */
-    var name: String? = null
-        set(value) {
-            field = value.apply(asJ::setName)
-        }
+    fun setName(name: String?) {
+        asJ.setName(name)
+    }
 
     /**
      * @see CheckoutCommand.setCreateBranch
      */
-    var isCreateBranch: Boolean = false
-        set(value) {
-            field = value.apply(asJ::setCreateBranch)
-        }
+    fun setCreateBranch(createBranch: Boolean) {
+        asJ.setCreateBranch(createBranch)
+    }
 
     /**
      * @see CheckoutCommand.setOrphan
      */
-    var isOrphan: Boolean = false
-        set(value) {
-            field = value.apply(asJ::setOrphan)
-        }
+    fun setOrphan(orphan: Boolean) {
+        asJ.setOrphan(orphan)
+    }
 
     /**
      * @see CheckoutCommand.setForceRefUpdate
      */
-    var isForceRefUpdate: Boolean = false
-        set(value) {
-            field = value.apply(asJ::setForceRefUpdate)
-        }
+    fun setForceRefUpdate(forceRefUpdate: Boolean) {
+        asJ.setForceRefUpdate(forceRefUpdate)
+    }
 
     /**
      * @see CheckoutCommand.setForced
      */
-    var isForced: Boolean = false
-        set(value) {
-            field = value.apply(asJ::setForced)
-        }
+    fun setForced(forced: Boolean) {
+        asJ.setForced(forced)
+    }
 
     /**
      * @see CheckoutCommand.setStartPoint
@@ -104,18 +96,16 @@ class KCheckoutCommand(private val asJ: CheckoutCommand) {
     /**
      * @see CheckoutCommand.setUpstreamMode
      */
-    var upstreamMode: CreateBranchCommand.SetupUpstreamMode? = null
-        set(value) {
-            field = value.apply(asJ::setUpstreamMode)
-        }
+    fun setUpstreamMode(mode: SetupUpstreamMode?) {
+        asJ.setUpstreamMode(mode)
+    }
 
     /**
      * @see CheckoutCommand.setStage
      */
-    var stage: CheckoutCommand.Stage? = null
-        set(value) {
-            field = value.apply(asJ::setStage)
-        }
+    fun setStage(stage: CheckoutCommand.Stage?) {
+        asJ.setStage(stage)
+    }
 
     /**
      * @see CheckoutCommand.getResult

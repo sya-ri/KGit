@@ -22,8 +22,7 @@ class KRmCommand(private val asJ: RmCommand) {
     /**
      * @see RmCommand.setCached
      */
-    var isCached: Boolean = false
-        set(value) {
-            asJ.setCached(value)
-        }
+    fun setCached(cached: Boolean) {
+        asJ.setCached(cached)
+    }
 }

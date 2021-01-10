@@ -16,32 +16,28 @@ class KInitCommand(private val asJ: InitCommand = InitCommand()) {
     /**
      * @see InitCommand.setDirectory
      */
-    var directory: File? = null
-        set(value) {
-            field = value.apply(asJ::setDirectory)
-        }
+    fun setDirectory(directory: File?) {
+        asJ.setDirectory(directory)
+    }
 
     /**
      * @see InitCommand.setGitDir
      */
-    var gitDir: File? = null
-        set(value) {
-            field = value.apply(asJ::setGitDir)
-        }
+    fun setGitDir(gitDir: File?) {
+        asJ.setGitDir(gitDir)
+    }
 
     /**
      * @see InitCommand.setBare
      */
-    var isBare: Boolean = false
-        set(value) {
-            field = value.apply(asJ::setBare)
-        }
+    fun setBare(bare: Boolean) {
+        asJ.setBare(bare)
+    }
 
     /**
      * @see InitCommand.setFs
      */
-    var fs: FS? = null
-        set(value) {
-            field = value.apply(asJ::setFs)
-        }
+    fun setFs(fs: FS?) {
+        asJ.setFs(fs)
+    }
 }

@@ -1,7 +1,6 @@
 package com.github.syari.kgit
 
 import org.eclipse.jgit.api.ResetCommand
-import org.eclipse.jgit.lib.NullProgressMonitor
 import org.eclipse.jgit.lib.ProgressMonitor
 import org.eclipse.jgit.lib.Ref
 
@@ -17,18 +16,16 @@ class KResetCommand(private val asJ: ResetCommand) {
     /**
      * @see ResetCommand.setRef
      */
-    var ref: String? = null
-        set(value) {
-            field = value.apply(asJ::setRef)
-        }
+    fun setRef(ref: String?) {
+        asJ.setRef(ref)
+    }
 
     /**
      * @see ResetCommand.setMode
      */
-    var mode: ResetCommand.ResetType? = null
-        set(value) {
-            field = value.apply(asJ::setMode)
-        }
+    fun setMode(mode: ResetCommand.ResetType?) {
+        asJ.setMode(mode)
+    }
 
     /**
      * @see ResetCommand.addPath
@@ -50,8 +47,7 @@ class KResetCommand(private val asJ: ResetCommand) {
     /**
      * @see ResetCommand.setProgressMonitor
      */
-    var progressMonitor: ProgressMonitor = NullProgressMonitor.INSTANCE
-        set(value) {
-            field = value.apply(asJ::setProgressMonitor)
-        }
+    fun setProgressMonitor(monitor: ProgressMonitor?) {
+        asJ.setProgressMonitor(monitor)
+    }
 }

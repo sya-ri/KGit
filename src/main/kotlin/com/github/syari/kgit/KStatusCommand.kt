@@ -2,7 +2,6 @@ package com.github.syari.kgit
 
 import org.eclipse.jgit.api.Status
 import org.eclipse.jgit.api.StatusCommand
-import org.eclipse.jgit.lib.NullProgressMonitor
 import org.eclipse.jgit.lib.ProgressMonitor
 import org.eclipse.jgit.submodule.SubmoduleWalk
 import org.eclipse.jgit.treewalk.WorkingTreeIterator
@@ -19,10 +18,9 @@ class KStatusCommand(private val asJ: StatusCommand) {
     /**
      * @see StatusCommand.setIgnoreSubmodules
      */
-    var ignoreSubmoduleMode: SubmoduleWalk.IgnoreSubmoduleMode? = null
-        set(value) {
-            field = value.apply(asJ::setIgnoreSubmodules)
-        }
+    fun setIgnoreSubmodules(ignoreSubmoduleMode: SubmoduleWalk.IgnoreSubmoduleMode?) {
+        asJ.setIgnoreSubmodules(ignoreSubmoduleMode)
+    }
 
     /**
      * @see StatusCommand.addPath
@@ -39,16 +37,14 @@ class KStatusCommand(private val asJ: StatusCommand) {
     /**
      * @see StatusCommand.setWorkingTreeIt
      */
-    var workingTreeIt: WorkingTreeIterator? = null
-        set(value) {
-            field = value.apply(asJ::setWorkingTreeIt)
-        }
+    fun setWorkingTreeIt(workingTreeIt: WorkingTreeIterator?) {
+        asJ.setWorkingTreeIt(workingTreeIt)
+    }
 
     /**
      * @see StatusCommand.setProgressMonitor
      */
-    var progressMonitor: ProgressMonitor = NullProgressMonitor.INSTANCE
-        set(value) {
-            field = value.apply(asJ::setProgressMonitor)
-        }
+    fun setProgressMonitor(monitor: ProgressMonitor?) {
+        asJ.setProgressMonitor(monitor)
+    }
 }

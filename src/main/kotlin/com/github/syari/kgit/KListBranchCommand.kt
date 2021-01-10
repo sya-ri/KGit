@@ -15,16 +15,14 @@ class KListBranchCommand(private val asJ: ListBranchCommand) {
     /**
      * @see ListBranchCommand.setListMode
      */
-    var listMode: ListBranchCommand.ListMode? = null
-        set(value) {
-            field = value.apply(asJ::setListMode)
-        }
+    fun setListMode(listMode:ListBranchCommand.ListMode?) {
+        asJ.setListMode(listMode)
+    }
 
     /**
      * @see ListBranchCommand.setContains
      */
-    var contains: String? = null
-        set(value) {
-            field = value.apply(asJ::setContains)
-        }
+    fun setContains(containsCommitish: String?) {
+        asJ.setContains(containsCommitish)
+    }
 }

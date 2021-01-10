@@ -24,10 +24,9 @@ class KCommitCommand(private val asJ: CommitCommand) {
     /**
      * @see CommitCommand.setAllowEmpty
      */
-    var isAllowEmpty: Boolean? = null
-        set(value) {
-            value?.let { field = it.apply(asJ::setAllowEmpty) }
-        }
+    fun setAllowEmpty(allowEmpty: Boolean) {
+        asJ.setAllowEmpty(allowEmpty)
+    }
 
     /**
      * @see CommitCommand.setCommitter
@@ -60,99 +59,91 @@ class KCommitCommand(private val asJ: CommitCommand) {
     /**
      * @see CommitCommand.setAll
      */
-    var isAll: Boolean = false
-        set(value) {
-            field = value.apply(asJ::setAll)
-        }
+    fun setAll(all: Boolean) {
+        asJ.setAll(all)
+    }
 
     /**
      * @see CommitCommand.setAmend
      */
-    var isAmend: Boolean = false
-        set(value) {
-            field = value.apply(asJ::setAmend)
-        }
+    fun setAmend(amend: Boolean) {
+        asJ.setAmend(amend)
+    }
 
     /**
      * @see CommitCommand.setOnly
      */
-    fun addOnly(only: String) {
+    fun setOnly(only: String) {
         asJ.setOnly(only)
     }
 
     /**
      * @see CommitCommand.setInsertChangeId
      */
-    var isInsertChangeId: Boolean = false
-        set(value) {
-            field = value.apply(asJ::setInsertChangeId)
-        }
+    fun setInsertChangeId(insertChangeId: Boolean) {
+        asJ.setInsertChangeId(insertChangeId)
+    }
 
     /**
      * @see CommitCommand.setReflogComment
      */
-    var reflogComment: String? = null
-        set(value) {
-            field = value.apply(asJ::setReflogComment)
-        }
+    fun setReflogComment(reflogComment: String?) {
+        asJ.setReflogComment(reflogComment)
+    }
 
     /**
      * @see CommitCommand.setNoVerify
      */
-    var isNoVerify: Boolean = false
-        set(value) {
-            field = value.apply(asJ::setNoVerify)
-        }
+    fun setNoVerify(noVerify: Boolean) {
+        asJ.setNoVerify(noVerify)
+    }
 
     /**
      * @see CommitCommand.setHookOutputStream
      */
-    fun setHookOutputStream(hookStdOut: PrintStream) {
+    fun setHookOutputStream(hookStdOut: PrintStream?) {
         asJ.setHookOutputStream(hookStdOut)
     }
 
     /**
      * @see CommitCommand.setHookErrorStream
      */
-    fun setHookErrorStream(hookStdErr: PrintStream) {
+    fun setHookErrorStream(hookStdErr: PrintStream?) {
         asJ.setHookErrorStream(hookStdErr)
     }
 
     /**
      * @see CommitCommand.setHookOutputStream
      */
-    fun setHookOutputStream(hookName: String, hookStdOut: PrintStream) {
+    fun setHookOutputStream(hookName: String, hookStdOut: PrintStream?) {
         asJ.setHookOutputStream(hookName, hookStdOut)
     }
 
     /**
      * @see CommitCommand.setHookErrorStream
      */
-    fun setHookErrorStream(hookName: String, hookStdErr: PrintStream) {
+    fun setHookErrorStream(hookName: String, hookStdErr: PrintStream?) {
         asJ.setHookOutputStream(hookName, hookStdErr)
     }
 
     /**
      * @see CommitCommand.setSigningKey
      */
-    var signingKey: String? = null
-        set(value) {
-            field = value.apply(asJ::setSigningKey)
-        }
+    fun setSigningKey(signingKey: String?) {
+        asJ.setSigningKey(signingKey)
+    }
 
     /**
      * @see CommitCommand.setSign
      */
-    var isSign: Boolean? = null
-        set(value) {
-            field = value.apply(asJ::setSign)
-        }
+    fun setSign(sign: Boolean?) {
+        asJ.setSign(sign)
+    }
 
     /**
      * @see CommitCommand.setCredentialsProvider
      */
-    var credentialsProvider: CredentialsProvider? = null
-        set(value) {
-            field = value.apply(asJ::setCredentialsProvider)
-        }
+    fun setCredentialsProvider(credentialsProvider: CredentialsProvider?) {
+        asJ.setCredentialsProvider(credentialsProvider)
+    }
 }

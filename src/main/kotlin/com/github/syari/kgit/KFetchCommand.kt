@@ -19,10 +19,9 @@ class KFetchCommand(private val asJ: FetchCommand) {
     /**
      * @see FetchCommand.setRecurseSubmodules
      */
-    var submoduleRecurseMode: SubmoduleConfig.FetchRecurseSubmodulesMode? = null
-        set(value) {
-            field = value.apply(asJ::setRecurseSubmodules)
-        }
+    fun setRecurseSubmodules(recurse: SubmoduleConfig.FetchRecurseSubmodulesMode?) {
+        asJ.setRecurseSubmodules(recurse)
+    }
 
     /**
      * @see FetchCommand.setRemote
@@ -57,14 +56,16 @@ class KFetchCommand(private val asJ: FetchCommand) {
         get() = asJ.isRemoveDeletedRefs
 
     /**
-     * @see FetchCommand.getProgressMonitor
      * @see FetchCommand.setProgressMonitor
      */
-    var progressMonitor: ProgressMonitor
-        set(value) {
-            asJ.progressMonitor = value
-        }
-        get() = asJ.progressMonitor
+    fun setProgressMonitor(monitor: ProgressMonitor?) {
+        asJ.progressMonitor = monitor
+    }
+
+    /**
+     * @see FetchCommand.getProgressMonitor
+     */
+    val progressMonitor: ProgressMonitor by asJ::progressMonitor
 
     /**
      * @see FetchCommand.setRefSpecs
@@ -109,18 +110,16 @@ class KFetchCommand(private val asJ: FetchCommand) {
     /**
      * @see FetchCommand.setTagOpt
      */
-    var tagOption: TagOpt? = null
-        set(value) {
-            field = value.apply(asJ::setTagOpt)
-        }
+    fun setTagOpt(tagOpt: TagOpt?) {
+        asJ.setTagOpt(tagOpt)
+    }
 
     /**
      * @see FetchCommand.setCallback
      */
-    var callback: FetchCommand.Callback? = null
-        set(value) {
-            field = value.apply(asJ::setCallback)
-        }
+    fun setCallback(callback: FetchCommand.Callback) {
+        asJ.setCallback(callback)
+    }
 
     /**
      * @see FetchCommand.setForceUpdate

@@ -14,16 +14,14 @@ class KDeleteBranchCommand(private val asJ: DeleteBranchCommand) {
     /**
      * @see DeleteBranchCommand.setBranchNames
      */
-    var branchNames: Array<String> = arrayOf()
-        set(value) {
-            field = value.apply(asJ::setBranchNames)
-        }
+    fun setBranchNames(vararg branchnames: String) {
+        asJ.setBranchNames(*branchnames)
+    }
 
     /**
      * @see DeleteBranchCommand.setForce
      */
-    var isForce: Boolean = false
-        set(value) {
-            field = value.apply(asJ::setForce)
-        }
+    fun setForce(force: Boolean) {
+        asJ.setForce(force)
+    }
 }

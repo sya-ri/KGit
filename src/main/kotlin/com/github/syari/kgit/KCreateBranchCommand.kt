@@ -16,18 +16,16 @@ class KCreateBranchCommand(private val asJ: CreateBranchCommand) {
     /**
      * @see CreateBranchCommand.setName
      */
-    var name: String? = null
-        set(value) {
-            field = value.apply(asJ::setName)
-        }
+    fun setName(name: String) {
+        asJ.setName(name)
+    }
 
     /**
      * @see CreateBranchCommand.setForce
      */
-    var isForce: Boolean = false
-        set(value) {
-            field = value.apply(asJ::setForce)
-        }
+    fun setForce(force: Boolean) {
+        asJ.setForce(force)
+    }
 
     /**
      * @see CreateBranchCommand.setStartPoint
@@ -46,8 +44,8 @@ class KCreateBranchCommand(private val asJ: CreateBranchCommand) {
     /**
      * @see CreateBranchCommand.setUpstreamMode
      */
-    var upstreamMode: CreateBranchCommand.SetupUpstreamMode? = null
-        set(value) {
-            field = value.apply(asJ::setUpstreamMode)
-        }
+
+    fun setUpstreamMode(mode: CreateBranchCommand.SetupUpstreamMode) {
+        asJ.setUpstreamMode(mode)
+    }
 }

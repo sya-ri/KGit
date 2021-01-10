@@ -1,7 +1,6 @@
 package com.github.syari.kgit
 
 import org.eclipse.jgit.api.LsRemoteCommand
-import org.eclipse.jgit.lib.Constants
 import org.eclipse.jgit.lib.Ref
 import org.eclipse.jgit.lib.Repository
 
@@ -19,34 +18,30 @@ class KLsRemoteCommand(private val asJ: LsRemoteCommand) {
     /**
      * @see LsRemoteCommand.setRemote
      */
-    var remote: String = Constants.DEFAULT_REMOTE_NAME
-        set(value) {
-            field = value.apply(asJ::setRemote)
-        }
+    fun setRemote(remote: String) {
+        asJ.setRemote(remote)
+    }
 
     /**
      * @see LsRemoteCommand.setHeads
      */
-    var isHeads: Boolean = false
-        set(value) {
-            field = value.apply(asJ::setHeads)
-        }
+    fun setHeads(heads: Boolean) {
+        asJ.setHeads(heads)
+    }
 
     /**
      * @see LsRemoteCommand.setTags
      */
-    var isTags: Boolean = false
-        set(value) {
-            field = value.apply(asJ::setTags)
-        }
+    fun setTags(tags: Boolean) {
+        asJ.setTags(tags)
+    }
 
     /**
      * @see LsRemoteCommand.setUploadPack
      */
-    var uploadPack: String? = null
-        set(value) {
-            field = value.apply(asJ::setUploadPack)
-        }
+    fun setUploadPack(uploadPack: String?) {
+        asJ.setUploadPack(uploadPack)
+    }
 
     /**
      * @see LsRemoteCommand.callAsMap

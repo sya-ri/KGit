@@ -15,16 +15,14 @@ class KRenameBranchCommand(private val asJ: RenameBranchCommand) {
     /**
      * @see RenameBranchCommand.setNewName
      */
-    var newName: String? = null
-        set(value) {
-            field = value.apply(asJ::setNewName)
-        }
+    fun setNewName(newName: String?) {
+        asJ.setNewName(newName)
+    }
 
     /**
      * @see RenameBranchCommand.setOldName
      */
-    var oldName: String? = null
-        set(value) {
-            field = value.apply(asJ::setOldName)
-        }
+    fun setOldName(oldName: String?) {
+        asJ.setOldName(oldName)
+    }
 }

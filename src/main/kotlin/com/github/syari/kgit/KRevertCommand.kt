@@ -3,7 +3,6 @@ package com.github.syari.kgit
 import org.eclipse.jgit.api.MergeResult
 import org.eclipse.jgit.api.RevertCommand
 import org.eclipse.jgit.lib.AnyObjectId
-import org.eclipse.jgit.lib.NullProgressMonitor
 import org.eclipse.jgit.lib.ProgressMonitor
 import org.eclipse.jgit.lib.Ref
 import org.eclipse.jgit.merge.MergeStrategy
@@ -42,10 +41,9 @@ class KRevertCommand(private val asJ: RevertCommand) {
     /**
      * @see RevertCommand.setOurCommitName
      */
-    var ourCommitName: String? = null
-        set(value) {
-            field = value.apply(asJ::setOurCommitName)
-        }
+    fun setOurCommitName(ourCommitName: String?) {
+        asJ.setOurCommitName(ourCommitName)
+    }
 
     /**
      * @see RevertCommand.getRevertedRefs
@@ -65,16 +63,14 @@ class KRevertCommand(private val asJ: RevertCommand) {
     /**
      * @see RevertCommand.setStrategy
      */
-    var strategy: MergeStrategy = MergeStrategy.RECURSIVE
-        set(value) {
-            field = value.apply(asJ::setStrategy)
-        }
+    fun setStrategy(strategy: MergeStrategy) {
+        asJ.setStrategy(strategy)
+    }
 
     /**
      * @see RevertCommand.setProgressMonitor
      */
-    var progressMonitor: ProgressMonitor? = NullProgressMonitor.INSTANCE
-        set(value) {
-            field = value.apply(asJ::setProgressMonitor)
-        }
+    fun setProgressMonitor(monitor: ProgressMonitor?) {
+        asJ.setProgressMonitor(monitor)
+    }
 }

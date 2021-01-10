@@ -59,24 +59,21 @@ class KLogCommand(private val asJ: LogCommand) {
     /**
      * @see LogCommand.setSkip
      */
-    var skip: Int = -1
-        set(value) {
-            field = value.apply(asJ::setSkip)
-        }
+    fun setSkip(skip: Int) {
+        asJ.setSkip(skip)
+    }
 
     /**
      * @see LogCommand.setMaxCount
      */
-    var maxCount: Int = -1
-        set(value) {
-            field = value.apply(asJ::setMaxCount)
-        }
+    fun setMaxCount(maxCount: Int) {
+        asJ.setMaxCount(maxCount)
+    }
 
     /**
      * @see LogCommand.setRevFilter
      */
-    var revFilter: RevFilter? = null
-        set(value) {
-            field = value.apply(asJ::setRevFilter)
-        }
+    fun setRevFilter(aFilter: RevFilter?) {
+        asJ.setRevFilter(aFilter)
+    }
 }

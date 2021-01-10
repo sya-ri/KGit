@@ -1,8 +1,6 @@
 package com.github.syari.kgit
 
 import org.eclipse.jgit.api.CloneCommand
-import org.eclipse.jgit.lib.Constants
-import org.eclipse.jgit.lib.NullProgressMonitor
 import org.eclipse.jgit.lib.ProgressMonitor
 import org.eclipse.jgit.transport.TagOpt
 import org.eclipse.jgit.util.FS
@@ -20,120 +18,105 @@ class KCloneCommand(private val asJ: CloneCommand = CloneCommand()) {
     /**
      * @see CloneCommand.setURI
      */
-    var uri: String? = null
-        set(value) {
-            field = value.apply(asJ::setURI)
-        }
+    fun setURI(uri: String?) {
+        asJ.setURI(uri)
+    }
 
     /**
      * @see CloneCommand.setDirectory
      */
-    var directory: File? = null
-        set(value) {
-            field = value.apply(asJ::setDirectory)
-        }
+    fun setDirectory(directory: File?) {
+        asJ.setDirectory(directory)
+    }
 
     /**
      * @see CloneCommand.setGitDir
      */
-    var gitDir: File? = null
-        set(value) {
-            field = value.apply(asJ::setGitDir)
-        }
+    fun setGitDir(gitDir: File?) {
+        asJ.setGitDir(gitDir)
+    }
 
     /**
      * @see CloneCommand.setBare
      */
-    var isBare: Boolean = false
-        set(value) {
-            field = value.apply(asJ::setBare)
-        }
+    fun setBare(bare: Boolean) {
+        asJ.setBare(bare)
+    }
 
     /**
      * @see CloneCommand.setFs
      */
-    var fs: FS? = null
-        set(value) {
-            field = value.apply(asJ::setFs)
-        }
+    fun setFs(fs: FS?) {
+        asJ.setFs(fs)
+    }
 
     /**
      * @see CloneCommand.setRemote
      */
-    var remote: String = Constants.DEFAULT_REMOTE_NAME
-        set(value) {
-            field = value.apply(asJ::setRemote)
-        }
+    fun setRemote(remote: String?) {
+        asJ.setRemote(remote)
+    }
 
     /**
      * @see CloneCommand.setBranch
      */
-    var branch: String = Constants.HEAD
-    set(value) {
-            field = value.apply(asJ::setBranch)
-        }
+    fun setBranch(branch: String?) {
+        asJ.setBranch(branch)
+    }
 
     /**
      * @see CloneCommand.setProgressMonitor
      */
-    var progressMonitor: ProgressMonitor = NullProgressMonitor.INSTANCE
-        set(value) {
-            field = value.apply(asJ::setProgressMonitor)
-        }
+    fun setProgressMonitor(monitor: ProgressMonitor?) {
+        asJ.setProgressMonitor(monitor)
+    }
 
     /**
      * @see CloneCommand.setCloneAllBranches
      */
-    var isCloneAllBranches: Boolean = false
-        set(value) {
-            field = value.apply(asJ::setCloneAllBranches)
-        }
+    fun setCloneAllBranches(cloneAllBranches: Boolean) {
+        asJ.setCloneAllBranches(cloneAllBranches)
+    }
 
     /**
      * @see CloneCommand.setMirror
      */
-    var isMirror: Boolean = false
-        set(value) {
-            field = value.apply(asJ::setMirror)
-        }
+    fun setMirror(mirror: Boolean) {
+        asJ.setMirror(mirror)
+    }
 
     /**
      * @see CloneCommand.setCloneSubmodules
      */
-    var isCloneSubmodules: Boolean = false
-        set(value) {
-            field = value.apply(asJ::setCloneSubmodules)
-        }
+    fun setCloneSubmodules(cloneSubmodules: Boolean) {
+        asJ.setCloneSubmodules(cloneSubmodules)
+    }
 
     /**
      * @see CloneCommand.setBranchesToClone
      */
-    var branchesToClone: Collection<String>? = null
-        set(value) {
-            field = value.apply(asJ::setBranchesToClone)
-        }
+    fun setBranchesToClone(branchesToClone: Collection<String>?) {
+        asJ.setBranchesToClone(branchesToClone)
+    }
 
     /**
      * @see CloneCommand.setTagOption
      */
-    var tagOption: TagOpt? = null
-        set(value) {
-            field = value.apply(asJ::setTagOption)
-        }
+    fun setTagOption(tagOption: TagOpt?) {
+        asJ.setTagOption(tagOption)
+    }
 
     /**
      * @see CloneCommand.setNoCheckout
      */
-    var isNoCheckout: Boolean = false
-        set(value) {
-            field = value.apply(asJ::setNoCheckout)
-        }
+    fun setNoCheckout(noCheckout: Boolean) {
+        asJ.setNoCheckout(noCheckout)
+    }
 
     /**
      * @see CloneCommand.Callback
      */
-    var callback: CloneCommand.Callback? = null
-        set(value) {
-            field = value.apply(asJ::setCallback)
-        }
+    fun setCallback(callback: CloneCommand.Callback?) {
+        asJ.setCallback(callback)
+    }
 }

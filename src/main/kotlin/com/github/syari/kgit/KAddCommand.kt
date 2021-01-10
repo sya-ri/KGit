@@ -23,10 +23,9 @@ class KAddCommand(private val asJ: AddCommand) {
     /**
      * @see AddCommand.setWorkingTreeIterator
      */
-    var workingTreeIterator: WorkingTreeIterator? = null
-        set(value) {
-            field = value.apply(asJ::setWorkingTreeIterator)
-        }
+    fun setWorkingTreeIterator(f: WorkingTreeIterator?) {
+        asJ.setWorkingTreeIterator(f)
+    }
 
     /**
      * @see AddCommand.setUpdate
