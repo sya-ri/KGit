@@ -142,4 +142,9 @@ class KGit(private val asJ: Git): AutoCloseable {
      * @see Git.reset
      */
     fun reset(action: KResetCommand.() -> Unit = {}) = KResetCommand(asJ.reset()).apply(action).call()
+
+    /**
+     * @see Git.status
+     */
+    fun status(action: KStatusCommand.() -> Unit = {}) = KStatusCommand(asJ.status()).apply(action).call()
 }
