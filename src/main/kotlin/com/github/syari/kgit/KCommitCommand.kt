@@ -19,7 +19,7 @@ class KCommitCommand(private val asJ: CommitCommand) {
      * @see CommitCommand.setMessage
      * @see CommitCommand.getMessage
      */
-    var message: String by asJ::message
+    var message: String? by asJ::message
 
     /**
      * @see CommitCommand.setAllowEmpty
