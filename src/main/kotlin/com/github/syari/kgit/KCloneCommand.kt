@@ -10,11 +10,11 @@ import java.io.File
 /**
  * @see CloneCommand
  */
-class KCloneCommand(asJ: CloneCommand = CloneCommand()): KTransportCommand<CloneCommand, Git>(asJ) {
+class KCloneCommand(asJ: CloneCommand = CloneCommand()): KTransportCommand<CloneCommand, Git>(asJ), KWrapperCallable<KGit, Git> {
     /**
      * @see CloneCommand.call
      */
-    fun callAsK() = KGit(call())
+    override fun callAsK() = KGit(call())
 
     /**
      * @see CloneCommand.setURI

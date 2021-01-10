@@ -10,7 +10,7 @@ import java.util.concurrent.Callable
 /**
  * @see InitCommand
  */
-class KInitCommand(private val asJ: InitCommand = InitCommand()): Callable<Git> {
+class KInitCommand(private val asJ: InitCommand = InitCommand()): Callable<Git>, KWrapperCallable<KGit, Git> {
     /**
      * @see InitCommand.call
      */
@@ -19,7 +19,7 @@ class KInitCommand(private val asJ: InitCommand = InitCommand()): Callable<Git> 
     /**
      * @see CloneCommand.call
      */
-    fun callAsK() = KGit(call())
+    override fun callAsK() = KGit(call())
 
     /**
      * @see InitCommand.setDirectory
