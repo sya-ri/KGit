@@ -23,7 +23,7 @@ class KGit(private val asJ: Git): AutoCloseable {
         /**
          * @see Git.cloneRepository
          */
-        inline fun cloneRepository(action: KCloneCommand.() -> Unit = {}) = KCloneCommand().apply(action).call()
+        inline fun cloneRepository(action: KCloneCommand.() -> Unit = {}) = KCloneCommand().apply(action).callAsK()
 
         /**
          * @see Git.lsRemoteRepository
@@ -33,7 +33,7 @@ class KGit(private val asJ: Git): AutoCloseable {
         /**
          * @see Git.init
          */
-        inline fun init(action: KInitCommand.() -> Unit = {}) = KInitCommand().apply(action).call()
+        inline fun init(action: KInitCommand.() -> Unit = {}) = KInitCommand().apply(action).callAsK()
 
         /**
          * @see Git.shutdown

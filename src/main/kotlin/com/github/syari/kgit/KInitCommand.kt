@@ -1,17 +1,25 @@
 package com.github.syari.kgit
 
+import org.eclipse.jgit.api.CloneCommand
+import org.eclipse.jgit.api.Git
 import org.eclipse.jgit.api.InitCommand
 import org.eclipse.jgit.util.FS
 import java.io.File
+import java.util.concurrent.Callable
 
 /**
  * @see InitCommand
  */
-class KInitCommand(private val asJ: InitCommand = InitCommand()) {
+class KInitCommand(private val asJ: InitCommand = InitCommand()): Callable<Git> {
     /**
      * @see InitCommand.call
      */
-    fun call() = KGit(asJ.call())
+    override fun call(): Git = asJ.call()
+
+    /**
+     * @see CloneCommand.call
+     */
+    fun callAsK() = KGit(call())
 
     /**
      * @see InitCommand.setDirectory

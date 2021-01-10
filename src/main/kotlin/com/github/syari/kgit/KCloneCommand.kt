@@ -1,6 +1,7 @@
 package com.github.syari.kgit
 
 import org.eclipse.jgit.api.CloneCommand
+import org.eclipse.jgit.api.Git
 import org.eclipse.jgit.lib.ProgressMonitor
 import org.eclipse.jgit.transport.TagOpt
 import org.eclipse.jgit.util.FS
@@ -9,11 +10,11 @@ import java.io.File
 /**
  * @see CloneCommand
  */
-class KCloneCommand(private val asJ: CloneCommand = CloneCommand()) {
+class KCloneCommand(asJ: CloneCommand = CloneCommand()): KTransportCommand<CloneCommand, Git>(asJ) {
     /**
      * @see CloneCommand.call
      */
-    fun call() = KGit(asJ.call())
+    fun callAsK() = KGit(call())
 
     /**
      * @see CloneCommand.setURI
