@@ -132,4 +132,9 @@ class KGit(private val asJ: Git): AutoCloseable {
      * @see Git.rm
      */
     fun rm(action: KRmCommand.() -> Unit = {}) = KRmCommand(asJ.rm()).apply(action).call()
+
+    /**
+     * @see Git.checkout
+     */
+    fun checkout(action: KCheckoutCommand.() -> Unit = {}) = KCheckoutCommand(asJ.checkout()).apply(action).call()
 }
