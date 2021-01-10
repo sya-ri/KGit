@@ -107,4 +107,9 @@ class KGit(private val asJ: Git): AutoCloseable {
      * @see Git.fetch
      */
     fun fetch(action: KFetchCommand.() -> Unit = {}) = KFetchCommand(asJ.fetch()).apply(action).call()
+
+    /**
+     * @see Git.push
+     */
+    fun push(action: KPushCommand.() -> Unit = {}) = KPushCommand(asJ.push()).apply(action).call()
 }
