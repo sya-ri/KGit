@@ -10,12 +10,7 @@ import org.eclipse.jgit.transport.TagOpt
 /**
  * @see FetchCommand
  */
-class KFetchCommand(private val asJ: FetchCommand) {
-    /**
-     * @see FetchCommand.call
-     */
-    fun call(): FetchResult = asJ.call()
-
+class KFetchCommand(asJ: FetchCommand): KGitCommand<FetchCommand, FetchResult>(asJ) {
     /**
      * @see FetchCommand.setRecurseSubmodules
      */

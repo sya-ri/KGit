@@ -6,12 +6,7 @@ import org.eclipse.jgit.lib.Ref
 /**
  * @see ListBranchCommand
  */
-class KListBranchCommand(private val asJ: ListBranchCommand) {
-    /**
-     * @see ListBranchCommand.call
-     */
-    fun call(): List<Ref> = asJ.call()
-
+class KListBranchCommand(asJ: ListBranchCommand): KGitCommand<ListBranchCommand, List<Ref>>(asJ) {
     /**
      * @see ListBranchCommand.setListMode
      */

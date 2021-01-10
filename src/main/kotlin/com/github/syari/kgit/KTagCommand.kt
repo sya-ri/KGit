@@ -8,12 +8,7 @@ import org.eclipse.jgit.revwalk.RevObject
 /**
  * @see TagCommand
  */
-class KTagCommand(private val asJ: TagCommand) {
-    /**
-     * @see TagCommand.call
-     */
-    fun call(): Ref = asJ.call()
-
+class KTagCommand(asJ: TagCommand): KGitCommand<TagCommand, Ref>(asJ) {
     /**
      * @see TagCommand.setName
      * @see TagCommand.getName

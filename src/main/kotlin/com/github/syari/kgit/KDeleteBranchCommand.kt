@@ -5,12 +5,7 @@ import org.eclipse.jgit.api.DeleteBranchCommand
 /**
  * @see DeleteBranchCommand
  */
-class KDeleteBranchCommand(private val asJ: DeleteBranchCommand) {
-    /**
-     * @see DeleteBranchCommand.call
-     */
-    fun call(): List<String> = asJ.call()
-
+class KDeleteBranchCommand(asJ: DeleteBranchCommand): KGitCommand<DeleteBranchCommand, List<String>>(asJ) {
     /**
      * @see DeleteBranchCommand.setBranchNames
      */

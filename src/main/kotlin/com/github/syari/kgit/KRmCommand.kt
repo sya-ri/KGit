@@ -6,12 +6,7 @@ import org.eclipse.jgit.dircache.DirCache
 /**
  * @see RmCommand
  */
-class KRmCommand(private val asJ: RmCommand) {
-    /**
-     * @see RmCommand.call
-     */
-    fun call(): DirCache? = asJ.call()
-
+class KRmCommand(asJ: RmCommand): KGitCommand<RmCommand, DirCache?>(asJ) {
     /**
      * @see RmCommand.addFilepattern
      */

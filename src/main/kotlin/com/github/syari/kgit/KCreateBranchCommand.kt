@@ -7,12 +7,7 @@ import org.eclipse.jgit.revwalk.RevCommit
 /**
  * @see CreateBranchCommand
  */
-class KCreateBranchCommand(private val asJ: CreateBranchCommand) {
-    /**
-     * @see CreateBranchCommand.call
-     */
-    fun call(): Ref = asJ.call()
-
+class KCreateBranchCommand(asJ: CreateBranchCommand): KGitCommand<CreateBranchCommand, Ref>(asJ) {
     /**
      * @see CreateBranchCommand.setName
      */

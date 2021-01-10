@@ -7,13 +7,8 @@ import org.eclipse.jgit.lib.Repository
 /**
  * @see LsRemoteCommand
  */
-class KLsRemoteCommand(private val asJ: LsRemoteCommand) {
+class KLsRemoteCommand(asJ: LsRemoteCommand): KGitCommand<LsRemoteCommand, Collection<Ref>>(asJ) {
     constructor(repo: Repository? = null): this(LsRemoteCommand(repo))
-
-    /**
-     * @see LsRemoteCommand.call
-     */
-    fun call(): Collection<Ref> = asJ.call()
 
     /**
      * @see LsRemoteCommand.setRemote

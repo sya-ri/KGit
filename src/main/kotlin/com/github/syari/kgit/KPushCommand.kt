@@ -11,12 +11,7 @@ import java.io.OutputStream
 /**
  * @see PushCommand
  */
-class KPushCommand(private val asJ: PushCommand) {
-    /**
-     * @see PushCommand.call
-     */
-    fun call(): Iterable<PushResult> = asJ.call()
-
+class KPushCommand(asJ: PushCommand): KGitCommand<PushCommand, Iterable<PushResult>>(asJ) {
     /**
      * @see PushCommand.setRemote
      * @see PushCommand.getRemote

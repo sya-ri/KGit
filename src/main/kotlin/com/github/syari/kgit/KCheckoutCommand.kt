@@ -10,12 +10,7 @@ import org.eclipse.jgit.revwalk.RevCommit
 /**
  * @see CheckoutCommand
  */
-class KCheckoutCommand(private val asJ: CheckoutCommand) {
-    /**
-     * @see CheckoutCommand.call
-     */
-    fun call(): Ref? = asJ.call()
-
+class KCheckoutCommand(asJ: CheckoutCommand): KGitCommand<CheckoutCommand, Ref?>(asJ) {
     /**
      * @see CheckoutCommand.setProgressMonitor
      */

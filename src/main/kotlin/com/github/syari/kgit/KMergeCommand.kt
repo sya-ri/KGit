@@ -7,12 +7,7 @@ import org.eclipse.jgit.lib.ProgressMonitor
 import org.eclipse.jgit.lib.Ref
 import org.eclipse.jgit.merge.MergeStrategy
 
-class KMergeCommand(private val asJ: MergeCommand) {
-    /**
-     * @see MergeCommand.call
-     */
-    fun call(): MergeResult = asJ.call()
-
+class KMergeCommand(asJ: MergeCommand): KGitCommand<MergeCommand, MergeResult>(asJ) {
     /**
      * @see MergeCommand.setStrategy
      */

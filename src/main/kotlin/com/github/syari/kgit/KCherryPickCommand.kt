@@ -10,12 +10,7 @@ import org.eclipse.jgit.merge.MergeStrategy
 /**
  * @see CherryPickCommand
  */
-class KCherryPickCommand(private val asJ: CherryPickCommand) {
-    /**
-     * @see CherryPickCommand.call
-     */
-    fun call(): CherryPickResult = asJ.call()
-
+class KCherryPickCommand(asJ: CherryPickCommand): KGitCommand<CherryPickCommand, CherryPickResult>(asJ) {
     /**
      * @see CherryPickCommand.include
      */

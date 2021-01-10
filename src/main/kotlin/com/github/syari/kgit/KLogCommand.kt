@@ -8,12 +8,7 @@ import org.eclipse.jgit.revwalk.filter.RevFilter
 /**
  * @see LogCommand
  */
-class KLogCommand(private val asJ: LogCommand) {
-    /**
-     * @see LogCommand.call
-     */
-    fun call(): Iterable<RevCommit> = asJ.call()
-
+class KLogCommand(asJ: LogCommand): KGitCommand<LogCommand, Iterable<RevCommit>>(asJ) {
     /**
      * @see LogCommand.add
      */

@@ -9,12 +9,7 @@ import org.eclipse.jgit.treewalk.WorkingTreeIterator
 /**
  * @see StatusCommand
  */
-class KStatusCommand(private val asJ: StatusCommand) {
-    /**
-     * @see StatusCommand.call
-     */
-    fun call(): Status = asJ.call()
-
+class KStatusCommand(asJ: StatusCommand): KGitCommand<StatusCommand, Status>(asJ) {
     /**
      * @see StatusCommand.setIgnoreSubmodules
      */

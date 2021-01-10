@@ -7,12 +7,7 @@ import java.io.OutputStream
 /**
  * @see ArchiveCommand
  */
-class KArchiveCommand(private val asJ: ArchiveCommand) {
-    /**
-     * @see ArchiveCommand.call
-     */
-    fun call(): OutputStream? = asJ.call()
-
+class KArchiveCommand(asJ: ArchiveCommand): KGitCommand<ArchiveCommand, OutputStream?>(asJ) {
     /**
      * @see ArchiveCommand.setTree
      */

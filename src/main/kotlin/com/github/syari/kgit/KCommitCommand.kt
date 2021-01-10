@@ -9,12 +9,7 @@ import java.io.PrintStream
 /**
  * @see CommitCommand
  */
-class KCommitCommand(private val asJ: CommitCommand) {
-    /**
-     * @see CommitCommand.call
-     */
-    fun call(): RevCommit = asJ.call()
-
+class KCommitCommand(asJ: CommitCommand): KGitCommand<CommitCommand, RevCommit>(asJ) {
     /**
      * @see CommitCommand.setMessage
      * @see CommitCommand.getMessage

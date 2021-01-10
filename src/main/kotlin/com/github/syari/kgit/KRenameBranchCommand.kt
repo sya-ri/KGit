@@ -6,12 +6,7 @@ import org.eclipse.jgit.lib.Ref
 /**
  * @see RenameBranchCommand
  */
-class KRenameBranchCommand(private val asJ: RenameBranchCommand) {
-    /**
-     * @see RenameBranchCommand.call
-     */
-    fun call(): Ref = asJ.call()
-
+class KRenameBranchCommand(asJ: RenameBranchCommand): KGitCommand<RenameBranchCommand, Ref>(asJ) {
     /**
      * @see RenameBranchCommand.setNewName
      */

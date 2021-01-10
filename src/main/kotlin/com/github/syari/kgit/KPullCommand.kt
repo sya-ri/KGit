@@ -12,12 +12,7 @@ import org.eclipse.jgit.transport.TagOpt
 /**
  * @see PullCommand
  */
-class KPullCommand(private val asJ: PullCommand) {
-    /**
-     * @see PullCommand.call
-     */
-    fun call(): PullResult = asJ.call()
-
+class KPullCommand(asJ: PullCommand): KGitCommand<PullCommand, PullResult>(asJ) {
     /**
      * @see PullCommand.setProgressMonitor
      */

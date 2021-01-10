@@ -7,12 +7,7 @@ import org.eclipse.jgit.treewalk.WorkingTreeIterator
 /**
  * @see AddCommand
  */
-class KAddCommand(private val asJ: AddCommand) {
-    /**
-     * @see AddCommand.call
-     */
-    fun call(): DirCache? = asJ.call()
-
+class KAddCommand(asJ: AddCommand): KGitCommand<AddCommand, DirCache?>(asJ) {
     /**
      * @see AddCommand.addFilepattern
      */

@@ -6,9 +6,4 @@ import org.eclipse.jgit.lib.Ref
 /**
  * @see ListTagCommand
  */
-class KListTagCommand(private val asJ: ListTagCommand) {
-    /**
-     * @see ListTagCommand.call
-     */
-    fun call(): List<Ref> = asJ.call()
-}
+class KListTagCommand(asJ: ListTagCommand): KGitCommand<ListTagCommand, List<Ref>>(asJ)

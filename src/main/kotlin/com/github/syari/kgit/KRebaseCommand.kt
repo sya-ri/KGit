@@ -10,12 +10,7 @@ import org.eclipse.jgit.revwalk.RevCommit
 /**
  * @see RebaseCommand
  */
-class KRebaseCommand(private val asJ: RebaseCommand) {
-    /**
-     * @see RebaseCommand.call
-     */
-    fun call(): RebaseResult = asJ.call()
-
+class KRebaseCommand(asJ: RebaseCommand): KGitCommand<RebaseCommand, RebaseResult>(asJ) {
     /**
      * @see RebaseCommand.tryFastForward
      */
