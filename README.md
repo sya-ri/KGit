@@ -1,5 +1,7 @@
 # KGit
-KGit is [JGit](https://github.com/eclipse/jgit) Kotlin wrapper library.
+KGit is Kotlin Wrapper Library of [JGit](https://github.com/eclipse/jgit).
+- Null Safety Methods
+- Command Settings Available Using Lambda Function (No Method Chain)
 
 ## Develop
 
