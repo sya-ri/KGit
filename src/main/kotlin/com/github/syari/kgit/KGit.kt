@@ -266,6 +266,11 @@ class KGit(asJ: Git): AutoCloseable, KWrapper<Git>(asJ) {
     fun gc(action: KGarbageCollectCommand.() -> Unit = {}) = KGarbageCollectCommand(asJ.gc()).apply(action).call()
 
     /**
+     * @see Git.nameRev
+     */
+    fun nameRev(action: KNameRevCommand.() -> Unit = {}) = KNameRevCommand(asJ.nameRev()).apply(action).call()
+
+    /**
      * @see Git.getRepository
      */
     val repository: Repository by asJ::repository
