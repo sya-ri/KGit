@@ -179,6 +179,11 @@ class KGit(asJ: Git): AutoCloseable, KWrapper<Git>(asJ) {
     fun lsRemote(action: KLsRemoteCommand.() -> Unit = {}) = KLsRemoteCommand(asJ.lsRemote()).apply(action).call()
 
     /**
+     * @see Git.clean
+     */
+    fun clean(action: KCleanCommand.() -> Unit = {}) = KCleanCommand(asJ.clean()).apply(action).call()
+
+    /**
      * @see Git.getRepository
      */
     val repository: Repository by asJ::repository
