@@ -23,6 +23,11 @@ configure<KtlintExtension> {
     version.set("0.40.0")
 }
 
+val sourceJar by tasks.registering(Jar::class) {
+    archiveClassifier.set("sources")
+    from(sourceSets.main.get().allJava.srcDirs)
+}
+
 publishing {
     repositories {
         maven {
@@ -46,7 +51,8 @@ publishing {
         register<MavenPublication>("maven") {
             groupId = "com.github.syari"
             artifactId = "kgit"
-            from(components["kotlin"])
+            from(components["java"])
+            artifact(sourceJar.get())
         }
     }
 }
