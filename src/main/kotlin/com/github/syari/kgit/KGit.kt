@@ -281,6 +281,11 @@ class KGit(asJ: Git): AutoCloseable, KWrapper<Git>(asJ) {
     fun remoteList(action: KRemoteListCommand.() -> Unit = {}) = KRemoteListCommand(asJ.remoteList()).apply(action).call()
 
     /**
+     * @see Git.remoteAdd
+     */
+    fun remoteAdd(action: KRemoteAddCommand.() -> Unit = {}) = KRemoteAddCommand(asJ.remoteAdd()).apply(action).call()
+
+    /**
      * @see Git.getRepository
      */
     val repository: Repository by asJ::repository
