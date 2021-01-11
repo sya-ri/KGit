@@ -29,7 +29,7 @@ class KAddCommand(asJ: AddCommand) : KGitCommand<AddCommand, DirCache?>(asJ) {
      */
     var isUpdate: Boolean
         set(value) {
-            value.apply(asJ::setUpdate)
+            asJ.isUpdate = value
         }
         get() = asJ.isUpdate
 }

@@ -15,7 +15,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.syari:kgit:1.0.0'
+    implementation 'com.github.syari:kgit:1.0.1'
 }
 ```
 
@@ -27,7 +27,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.syari:kgit:1.0.0")
+    implementation("com.github.syari:kgit:1.0.1")
 }
 ```
 
