@@ -11,7 +11,7 @@ KGit is Kotlin Wrapper Library of [JGit](https://github.com/eclipse/jgit).
 
 ```groovy
 repositories {
-    maven { url 'https://dl.bintray.com/sya-ri/maven/' }
+    jcenter()
 }
 
 dependencies {
@@ -23,7 +23,7 @@ dependencies {
 
 ```kotlin
 repositories {
-    maven(url = "https://dl.bintray.com/sya-ri/maven/")
+    jcenter()
 }
 
 dependencies {
