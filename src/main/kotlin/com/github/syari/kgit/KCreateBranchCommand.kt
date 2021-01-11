@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.github.syari.kgit
 
 import org.eclipse.jgit.api.CreateBranchCommand
