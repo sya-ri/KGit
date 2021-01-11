@@ -26,6 +26,14 @@ configure<KtlintExtension> {
 publishing {
     repositories {
         maven {
+            name = "Bintray"
+            url = uri("https://api.bintray.com/maven/sya-ri/maven/KGit/;publish=1;override=1")
+            credentials {
+                username = System.getenv("BINTRAY_USER")
+                password = System.getenv("BINTRAY_KEY")
+            }
+        }
+        maven {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/sya-ri/KGit")
             credentials {
@@ -35,7 +43,7 @@ publishing {
         }
     }
     publications {
-        register<MavenPublication>("gpr") {
+        register<MavenPublication>("maven") {
             groupId = "com.github.syari"
             artifactId = "kgit"
             from(components["kotlin"])
