@@ -184,6 +184,11 @@ class KGit(asJ: Git): AutoCloseable, KWrapper<Git>(asJ) {
     fun clean(action: KCleanCommand.() -> Unit = {}) = KCleanCommand(asJ.clean()).apply(action).call()
 
     /**
+     * @see Git.blame
+     */
+    fun blame(action: KBlameCommand.() -> Unit = {}) = KBlameCommand(asJ.blame()).apply(action).call()
+
+    /**
      * @see Git.getRepository
      */
     val repository: Repository by asJ::repository
