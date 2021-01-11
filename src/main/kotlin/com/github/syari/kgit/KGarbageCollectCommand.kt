@@ -10,7 +10,7 @@ import java.util.Properties
 /**
  * @see GarbageCollectCommand
  */
-class KGarbageCollectCommand(asJ: GarbageCollectCommand): KGitCommand<GarbageCollectCommand, Properties>(asJ) {
+class KGarbageCollectCommand(asJ: GarbageCollectCommand) : KGitCommand<GarbageCollectCommand, Properties>(asJ) {
     /**
      * @see GarbageCollectCommand.setProgressMonitor
      */

@@ -8,7 +8,7 @@ import org.eclipse.jgit.lib.ReflogEntry
 /**
  * @see ReflogCommand
  */
-class KReflogCommand(asJ: ReflogCommand): KGitCommand<ReflogCommand, Collection<ReflogEntry>>(asJ) {
+class KReflogCommand(asJ: ReflogCommand) : KGitCommand<ReflogCommand, Collection<ReflogEntry>>(asJ) {
     /**
      * @see ReflogCommand.setRef
      */

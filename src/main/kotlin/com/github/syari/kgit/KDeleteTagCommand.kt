@@ -7,7 +7,7 @@ import org.eclipse.jgit.api.DeleteTagCommand
 /**
  * @see DeleteTagCommand
  */
-class KDeleteTagCommand(asJ: DeleteTagCommand): KGitCommand<DeleteTagCommand, List<String>>(asJ) {
+class KDeleteTagCommand(asJ: DeleteTagCommand) : KGitCommand<DeleteTagCommand, List<String>>(asJ) {
     /**
      * @see DeleteTagCommand.setTags
      */

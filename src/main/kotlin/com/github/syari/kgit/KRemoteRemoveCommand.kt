@@ -8,7 +8,7 @@ import org.eclipse.jgit.transport.RemoteConfig
 /**
  * @see RemoteRemoveCommand
  */
-class KRemoteRemoveCommand(asJ: RemoteRemoveCommand): KGitCommand<RemoteRemoveCommand, RemoteConfig>(asJ) {
+class KRemoteRemoveCommand(asJ: RemoteRemoveCommand) : KGitCommand<RemoteRemoveCommand, RemoteConfig>(asJ) {
     /**
      * @see RemoteRemoveCommand.setRemoteName
      */

@@ -9,7 +9,7 @@ import org.eclipse.jgit.revwalk.RevObject
 /**
  * @see RemoveNoteCommand
  */
-class KRemoveNoteCommand(asJ: RemoveNoteCommand): KGitCommand<RemoveNoteCommand, Note?>(asJ) {
+class KRemoveNoteCommand(asJ: RemoveNoteCommand) : KGitCommand<RemoveNoteCommand, Note?>(asJ) {
     /**
      * @see RemoveNoteCommand.setObjectId
      */

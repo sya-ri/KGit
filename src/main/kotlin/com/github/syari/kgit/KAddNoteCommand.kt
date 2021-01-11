@@ -9,7 +9,7 @@ import org.eclipse.jgit.revwalk.RevObject
 /**
  * @see AddNoteCommand
  */
-class KAddNoteCommand(asJ: AddNoteCommand): KGitCommand<AddNoteCommand, Note?>(asJ) {
+class KAddNoteCommand(asJ: AddNoteCommand) : KGitCommand<AddNoteCommand, Note?>(asJ) {
     /**
      * @see AddNoteCommand.setObjectId
      */

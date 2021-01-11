@@ -14,7 +14,7 @@ import org.eclipse.jgit.transport.TagOpt
 /**
  * @see PullCommand
  */
-class KPullCommand(asJ: PullCommand): KTransportCommand<PullCommand, PullResult>(asJ) {
+class KPullCommand(asJ: PullCommand) : KTransportCommand<PullCommand, PullResult>(asJ) {
     /**
      * @see PullCommand.setProgressMonitor
      */

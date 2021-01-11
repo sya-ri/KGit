@@ -12,7 +12,7 @@ import org.eclipse.jgit.lib.ObjectId
 /**
  * @see BlameCommand
  */
-class KBlameCommand(asJ: BlameCommand): KGitCommand<BlameCommand, BlameResult?>(asJ) {
+class KBlameCommand(asJ: BlameCommand) : KGitCommand<BlameCommand, BlameResult?>(asJ) {
     /**
      * @see BlameCommand.setFilePath
      */

@@ -12,7 +12,7 @@ import org.eclipse.jgit.transport.TagOpt
 /**
  * @see FetchCommand
  */
-class KFetchCommand(asJ: FetchCommand): KTransportCommand<FetchCommand, FetchResult>(asJ) {
+class KFetchCommand(asJ: FetchCommand) : KTransportCommand<FetchCommand, FetchResult>(asJ) {
     /**
      * @see FetchCommand.setRecurseSubmodules
      */

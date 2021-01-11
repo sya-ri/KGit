@@ -12,7 +12,7 @@ import java.io.File
 /**
  * @see CloneCommand
  */
-class KCloneCommand(asJ: CloneCommand = CloneCommand()): KTransportCommand<CloneCommand, Git>(asJ), KWrapperCallable<KGit, Git> {
+class KCloneCommand(asJ: CloneCommand = CloneCommand()) : KTransportCommand<CloneCommand, Git>(asJ), KWrapperCallable<KGit, Git> {
     /**
      * @see CloneCommand.call
      */

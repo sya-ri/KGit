@@ -12,7 +12,7 @@ import java.util.concurrent.Callable
 /**
  * @see InitCommand
  */
-class KInitCommand(private val asJ: InitCommand = InitCommand()): Callable<Git>, KWrapperCallable<KGit, Git> {
+class KInitCommand(private val asJ: InitCommand = InitCommand()) : Callable<Git>, KWrapperCallable<KGit, Git> {
     /**
      * @see InitCommand.call
      */

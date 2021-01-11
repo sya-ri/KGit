@@ -13,7 +13,7 @@ import org.eclipse.jgit.revwalk.RevCommit
 /**
  * @see RevertCommand
  */
-class KRevertCommand(asJ: RevertCommand): KGitCommand<RevertCommand, RevCommit?>(asJ) {
+class KRevertCommand(asJ: RevertCommand) : KGitCommand<RevertCommand, RevCommit?>(asJ) {
     /**
      * @see RevertCommand.include
      */

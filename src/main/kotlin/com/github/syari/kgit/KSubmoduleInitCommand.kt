@@ -7,7 +7,7 @@ import org.eclipse.jgit.api.SubmoduleInitCommand
 /**
  * @see SubmoduleInitCommand
  */
-class KSubmoduleInitCommand(asJ: SubmoduleInitCommand): KGitCommand<SubmoduleInitCommand, Collection<String>>(asJ) {
+class KSubmoduleInitCommand(asJ: SubmoduleInitCommand) : KGitCommand<SubmoduleInitCommand, Collection<String>>(asJ) {
     /**
      * @see SubmoduleInitCommand.addPath
      */

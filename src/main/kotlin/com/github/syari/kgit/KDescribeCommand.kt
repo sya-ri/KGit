@@ -8,7 +8,7 @@ import org.eclipse.jgit.lib.ObjectId
 /**
  * @see DescribeCommand
  */
-class KDescribeCommand(asJ: DescribeCommand): KGitCommand<DescribeCommand, String?>(asJ) {
+class KDescribeCommand(asJ: DescribeCommand) : KGitCommand<DescribeCommand, String?>(asJ) {
     /**
      * @see DescribeCommand.setTarget
      */

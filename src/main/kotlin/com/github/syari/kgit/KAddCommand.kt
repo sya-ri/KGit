@@ -9,7 +9,7 @@ import org.eclipse.jgit.treewalk.WorkingTreeIterator
 /**
  * @see AddCommand
  */
-class KAddCommand(asJ: AddCommand): KGitCommand<AddCommand, DirCache?>(asJ) {
+class KAddCommand(asJ: AddCommand) : KGitCommand<AddCommand, DirCache?>(asJ) {
     /**
      * @see AddCommand.addFilepattern
      */

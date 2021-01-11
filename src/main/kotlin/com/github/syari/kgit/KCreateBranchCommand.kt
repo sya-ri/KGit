@@ -9,7 +9,7 @@ import org.eclipse.jgit.revwalk.RevCommit
 /**
  * @see CreateBranchCommand
  */
-class KCreateBranchCommand(asJ: CreateBranchCommand): KGitCommand<CreateBranchCommand, Ref>(asJ) {
+class KCreateBranchCommand(asJ: CreateBranchCommand) : KGitCommand<CreateBranchCommand, Ref>(asJ) {
     /**
      * @see CreateBranchCommand.setName
      */

@@ -11,7 +11,7 @@ import org.eclipse.jgit.merge.MergeStrategy
 /**
  * @see SubmoduleUpdateCommand
  */
-class KSubmoduleUpdateCommand(asJ: SubmoduleUpdateCommand): KTransportCommand<SubmoduleUpdateCommand, Collection<String>>(asJ) {
+class KSubmoduleUpdateCommand(asJ: SubmoduleUpdateCommand) : KTransportCommand<SubmoduleUpdateCommand, Collection<String>>(asJ) {
     /**
      * @see SubmoduleUpdateCommand.setProgressMonitor
      */

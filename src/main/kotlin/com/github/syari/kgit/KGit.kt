@@ -10,7 +10,7 @@ import java.io.File
 /**
  * @see Git
  */
-class KGit(asJ: Git): AutoCloseable, KWrapper<Git>(asJ) {
+class KGit(asJ: Git) : AutoCloseable, KWrapper<Git>(asJ) {
     companion object {
         /**
          * @see Git.open
@@ -43,7 +43,7 @@ class KGit(asJ: Git): AutoCloseable, KWrapper<Git>(asJ) {
         fun shutdown() = Git.shutdown()
     }
 
-    constructor(repo: Repository): this(Git(repo))
+    constructor(repo: Repository) : this(Git(repo))
 
     /**
      * @see Git.close

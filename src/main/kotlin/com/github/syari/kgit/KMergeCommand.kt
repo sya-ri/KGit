@@ -9,7 +9,7 @@ import org.eclipse.jgit.lib.ProgressMonitor
 import org.eclipse.jgit.lib.Ref
 import org.eclipse.jgit.merge.MergeStrategy
 
-class KMergeCommand(asJ: MergeCommand): KGitCommand<MergeCommand, MergeResult>(asJ) {
+class KMergeCommand(asJ: MergeCommand) : KGitCommand<MergeCommand, MergeResult>(asJ) {
     /**
      * @see MergeCommand.setStrategy
      */

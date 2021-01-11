@@ -8,4 +8,4 @@ import org.eclipse.jgit.revwalk.RevCommit
 /**
  * @see StashListCommand
  */
-class KStashListCommand(asJ: StashListCommand): KGitCommand<StashListCommand, Collection<RevCommit>>(asJ)
+class KStashListCommand(asJ: StashListCommand) : KGitCommand<StashListCommand, Collection<RevCommit>>(asJ)

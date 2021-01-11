@@ -10,7 +10,7 @@ import org.eclipse.jgit.revwalk.filter.RevFilter
 /**
  * @see LogCommand
  */
-class KLogCommand(asJ: LogCommand): KGitCommand<LogCommand, Iterable<RevCommit>>(asJ) {
+class KLogCommand(asJ: LogCommand) : KGitCommand<LogCommand, Iterable<RevCommit>>(asJ) {
     /**
      * @see LogCommand.add
      */

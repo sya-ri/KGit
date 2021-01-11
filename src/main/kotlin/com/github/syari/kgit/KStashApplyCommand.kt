@@ -9,7 +9,7 @@ import org.eclipse.jgit.merge.MergeStrategy
 /**
  * @see StashApplyCommand
  */
-class KStashApplyCommand(asJ: StashApplyCommand): KGitCommand<StashApplyCommand, ObjectId>(asJ) {
+class KStashApplyCommand(asJ: StashApplyCommand) : KGitCommand<StashApplyCommand, ObjectId>(asJ) {
     /**
      * @see StashApplyCommand.setStashRef
      */

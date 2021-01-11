@@ -10,7 +10,7 @@ import org.eclipse.jgit.revwalk.RevObject
 /**
  * @see TagCommand
  */
-class KTagCommand(asJ: TagCommand): KGitCommand<TagCommand, Ref>(asJ) {
+class KTagCommand(asJ: TagCommand) : KGitCommand<TagCommand, Ref>(asJ) {
     /**
      * @see TagCommand.setName
      * @see TagCommand.getName

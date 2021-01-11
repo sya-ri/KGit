@@ -13,7 +13,7 @@ import java.io.OutputStream
 /**
  * @see PushCommand
  */
-class KPushCommand(asJ: PushCommand): KTransportCommand<PushCommand, Iterable<PushResult>>(asJ) {
+class KPushCommand(asJ: PushCommand) : KTransportCommand<PushCommand, Iterable<PushResult>>(asJ) {
     /**
      * @see PushCommand.setRemote
      * @see PushCommand.getRemote

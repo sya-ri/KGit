@@ -6,7 +6,7 @@ import org.eclipse.jgit.api.ShowNoteCommand
 import org.eclipse.jgit.notes.Note
 import org.eclipse.jgit.revwalk.RevObject
 
-class KShowNoteCommand(asJ: ShowNoteCommand): KGitCommand<ShowNoteCommand, Note>(asJ) {
+class KShowNoteCommand(asJ: ShowNoteCommand) : KGitCommand<ShowNoteCommand, Note>(asJ) {
     /**
      * @see ShowNoteCommand.setObjectId
      */
@@ -19,4 +19,5 @@ class KShowNoteCommand(asJ: ShowNoteCommand): KGitCommand<ShowNoteCommand, Note>
      */
     fun setNotesRef(notesRef: String?) {
         asJ.setNotesRef(notesRef)
-    }}
+    }
+}

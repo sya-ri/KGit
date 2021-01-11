@@ -12,7 +12,7 @@ import org.eclipse.jgit.revwalk.RevCommit
 /**
  * @see RebaseCommand
  */
-class KRebaseCommand(asJ: RebaseCommand): KGitCommand<RebaseCommand, RebaseResult>(asJ) {
+class KRebaseCommand(asJ: RebaseCommand) : KGitCommand<RebaseCommand, RebaseResult>(asJ) {
     /**
      * @see RebaseCommand.tryFastForward
      */

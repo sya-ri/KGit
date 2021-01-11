@@ -8,11 +8,11 @@ import org.eclipse.jgit.lib.Ref
 /**
  * @see ListBranchCommand
  */
-class KListBranchCommand(asJ: ListBranchCommand): KGitCommand<ListBranchCommand, List<Ref>>(asJ) {
+class KListBranchCommand(asJ: ListBranchCommand) : KGitCommand<ListBranchCommand, List<Ref>>(asJ) {
     /**
      * @see ListBranchCommand.setListMode
      */
-    fun setListMode(listMode:ListBranchCommand.ListMode?) {
+    fun setListMode(listMode: ListBranchCommand.ListMode?) {
         asJ.setListMode(listMode)
     }
 

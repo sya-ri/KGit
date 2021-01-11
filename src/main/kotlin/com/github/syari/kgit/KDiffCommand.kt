@@ -12,7 +12,7 @@ import java.io.OutputStream
 /**
  * @see DiffCommand
  */
-class KDiffCommand(asJ: DiffCommand): KGitCommand<DiffCommand, List<DiffEntry>>(asJ) {
+class KDiffCommand(asJ: DiffCommand) : KGitCommand<DiffCommand, List<DiffEntry>>(asJ) {
     /**
      * @see DiffCommand.setCached
      */

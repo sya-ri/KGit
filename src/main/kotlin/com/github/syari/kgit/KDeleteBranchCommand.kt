@@ -7,7 +7,7 @@ import org.eclipse.jgit.api.DeleteBranchCommand
 /**
  * @see DeleteBranchCommand
  */
-class KDeleteBranchCommand(asJ: DeleteBranchCommand): KGitCommand<DeleteBranchCommand, List<String>>(asJ) {
+class KDeleteBranchCommand(asJ: DeleteBranchCommand) : KGitCommand<DeleteBranchCommand, List<String>>(asJ) {
     /**
      * @see DeleteBranchCommand.setBranchNames
      */

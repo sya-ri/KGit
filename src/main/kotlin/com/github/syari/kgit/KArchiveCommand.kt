@@ -9,7 +9,7 @@ import java.io.OutputStream
 /**
  * @see ArchiveCommand
  */
-class KArchiveCommand(asJ: ArchiveCommand): KGitCommand<ArchiveCommand, OutputStream?>(asJ) {
+class KArchiveCommand(asJ: ArchiveCommand) : KGitCommand<ArchiveCommand, OutputStream?>(asJ) {
     /**
      * @see ArchiveCommand.setTree
      */

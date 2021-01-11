@@ -9,7 +9,7 @@ import org.eclipse.jgit.transport.URIish
 /**
  * @see RemoteAddCommand
  */
-class KRemoteAddCommand(asJ: RemoteAddCommand): KGitCommand<RemoteAddCommand, RemoteConfig>(asJ) {
+class KRemoteAddCommand(asJ: RemoteAddCommand) : KGitCommand<RemoteAddCommand, RemoteConfig>(asJ) {
     /**
      * @see RemoteAddCommand
      */

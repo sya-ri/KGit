@@ -12,7 +12,7 @@ import org.eclipse.jgit.merge.MergeStrategy
 /**
  * @see CherryPickCommand
  */
-class KCherryPickCommand(asJ: CherryPickCommand): KGitCommand<CherryPickCommand, CherryPickResult>(asJ) {
+class KCherryPickCommand(asJ: CherryPickCommand) : KGitCommand<CherryPickCommand, CherryPickResult>(asJ) {
     /**
      * @see CherryPickCommand.include
      */

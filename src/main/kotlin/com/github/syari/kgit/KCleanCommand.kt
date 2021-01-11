@@ -7,7 +7,7 @@ import org.eclipse.jgit.api.CleanCommand
 /**
  * @see CleanCommand
  */
-class KCleanCommand(asJ: CleanCommand): KGitCommand<CleanCommand, Set<String>>(asJ) {
+class KCleanCommand(asJ: CleanCommand) : KGitCommand<CleanCommand, Set<String>>(asJ) {
     /**
      * @see CleanCommand.setPaths
      */

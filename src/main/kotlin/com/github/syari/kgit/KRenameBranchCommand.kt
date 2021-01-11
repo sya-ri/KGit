@@ -8,7 +8,7 @@ import org.eclipse.jgit.lib.Ref
 /**
  * @see RenameBranchCommand
  */
-class KRenameBranchCommand(asJ: RenameBranchCommand): KGitCommand<RenameBranchCommand, Ref>(asJ) {
+class KRenameBranchCommand(asJ: RenameBranchCommand) : KGitCommand<RenameBranchCommand, Ref>(asJ) {
     /**
      * @see RenameBranchCommand.setNewName
      */

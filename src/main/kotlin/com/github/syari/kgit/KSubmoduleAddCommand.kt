@@ -9,7 +9,7 @@ import org.eclipse.jgit.lib.Repository
 /**
  * @see SubmoduleAddCommand
  */
-class KSubmoduleAddCommand(asJ: SubmoduleAddCommand): KTransportCommand<SubmoduleAddCommand, Repository?>(asJ) {
+class KSubmoduleAddCommand(asJ: SubmoduleAddCommand) : KTransportCommand<SubmoduleAddCommand, Repository?>(asJ) {
     /**
      * @see SubmoduleAddCommand.setName
      */
@@ -23,7 +23,7 @@ class KSubmoduleAddCommand(asJ: SubmoduleAddCommand): KTransportCommand<Submodul
     fun setPath(path: String?) {
         asJ.setPath(path)
     }
-    
+
     /**
      * @see SubmoduleAddCommand.setURI
      */

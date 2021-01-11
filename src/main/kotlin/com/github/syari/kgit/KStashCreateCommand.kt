@@ -9,7 +9,7 @@ import org.eclipse.jgit.revwalk.RevCommit
 /**
  * @see StashCreateCommand
  */
-class KStashCreateCommand(asJ: StashCreateCommand): KGitCommand<StashCreateCommand, RevCommit>(asJ) {
+class KStashCreateCommand(asJ: StashCreateCommand) : KGitCommand<StashCreateCommand, RevCommit>(asJ) {
     /**
      * @see StashCreateCommand.setIndexMessage
      */

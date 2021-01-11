@@ -8,7 +8,7 @@ import org.eclipse.jgit.api.SubmoduleDeinitResult
 /**
  * @see SubmoduleDeinitCommand
  */
-class KSubmoduleDeinitCommand(asJ: SubmoduleDeinitCommand): KGitCommand<SubmoduleDeinitCommand, Collection<SubmoduleDeinitResult>>(asJ) {
+class KSubmoduleDeinitCommand(asJ: SubmoduleDeinitCommand) : KGitCommand<SubmoduleDeinitCommand, Collection<SubmoduleDeinitResult>>(asJ) {
     /**
      * @see SubmoduleDeinitCommand.addPath
      */

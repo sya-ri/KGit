@@ -8,7 +8,7 @@ import org.eclipse.jgit.lib.ObjectId
 /**
  * @see StashDropCommand
  */
-class KStashDropCommand(asJ: StashDropCommand): KGitCommand<StashDropCommand, ObjectId>(asJ) {
+class KStashDropCommand(asJ: StashDropCommand) : KGitCommand<StashDropCommand, ObjectId>(asJ) {
     /**
      * @see StashDropCommand.setStashRef
      */

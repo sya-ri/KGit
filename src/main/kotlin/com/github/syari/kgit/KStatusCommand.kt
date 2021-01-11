@@ -11,7 +11,7 @@ import org.eclipse.jgit.treewalk.WorkingTreeIterator
 /**
  * @see StatusCommand
  */
-class KStatusCommand(asJ: StatusCommand): KGitCommand<StatusCommand, Status>(asJ) {
+class KStatusCommand(asJ: StatusCommand) : KGitCommand<StatusCommand, Status>(asJ) {
     /**
      * @see StatusCommand.setIgnoreSubmodules
      */

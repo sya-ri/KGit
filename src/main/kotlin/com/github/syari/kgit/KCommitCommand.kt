@@ -11,7 +11,7 @@ import java.io.PrintStream
 /**
  * @see CommitCommand
  */
-class KCommitCommand(asJ: CommitCommand): KGitCommand<CommitCommand, RevCommit>(asJ) {
+class KCommitCommand(asJ: CommitCommand) : KGitCommand<CommitCommand, RevCommit>(asJ) {
     /**
      * @see CommitCommand.setMessage
      * @see CommitCommand.getMessage

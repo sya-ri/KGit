@@ -9,7 +9,7 @@ import java.io.InputStream
 /**
  * @see ApplyCommand
  */
-class KApplyCommand(asJ: ApplyCommand): KGitCommand<ApplyCommand, ApplyResult>(asJ) {
+class KApplyCommand(asJ: ApplyCommand) : KGitCommand<ApplyCommand, ApplyResult>(asJ) {
     /**
      * @see ApplyCommand.setPatch
      */

@@ -10,7 +10,7 @@ import org.eclipse.jgit.transport.URIish
 /**
  * @see RemoteSetUrlCommand
  */
-class KRemoteSetUrlCommand(asJ: RemoteSetUrlCommand): KGitCommand<RemoteSetUrlCommand, RemoteConfig>(asJ) {
+class KRemoteSetUrlCommand(asJ: RemoteSetUrlCommand) : KGitCommand<RemoteSetUrlCommand, RemoteConfig>(asJ) {
     /**
      * @see RemoteSetUrlCommand
      */

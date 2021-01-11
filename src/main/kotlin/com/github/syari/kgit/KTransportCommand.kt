@@ -4,7 +4,7 @@ import org.eclipse.jgit.api.TransportCommand
 import org.eclipse.jgit.api.TransportConfigCallback
 import org.eclipse.jgit.transport.CredentialsProvider
 
-abstract class KTransportCommand<T: TransportCommand<*, S>, S>(asJ: T): KGitCommand<T, S>(asJ) {
+abstract class KTransportCommand<T : TransportCommand<*, S>, S>(asJ: T) : KGitCommand<T, S>(asJ) {
     fun setCredentialsProvider(credentialsProvider: CredentialsProvider?) {
         asJ.setCredentialsProvider(credentialsProvider)
     }

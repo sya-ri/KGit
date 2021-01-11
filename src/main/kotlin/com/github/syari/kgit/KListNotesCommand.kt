@@ -8,10 +8,11 @@ import org.eclipse.jgit.notes.Note
 /**
  * @see ListNotesCommand
  */
-class KListNotesCommand(asJ: ListNotesCommand): KGitCommand<ListNotesCommand, List<Note>>(asJ) {
+class KListNotesCommand(asJ: ListNotesCommand) : KGitCommand<ListNotesCommand, List<Note>>(asJ) {
     /**
      * @see ListNotesCommand.setNotesRef
      */
     fun setNotesRef(notesRef: String?) {
         asJ.setNotesRef(notesRef)
-    }}
+    }
+}

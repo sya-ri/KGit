@@ -9,7 +9,7 @@ import org.eclipse.jgit.lib.Ref
 /**
  * @see NameRevCommand
  */
-class KNameRevCommand(asJ: NameRevCommand): KGitCommand<NameRevCommand, Map<ObjectId, String>>(asJ) {
+class KNameRevCommand(asJ: NameRevCommand) : KGitCommand<NameRevCommand, Map<ObjectId, String>>(asJ) {
     /**
      * @see NameRevCommand.add
      */

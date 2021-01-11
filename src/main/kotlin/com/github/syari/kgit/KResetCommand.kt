@@ -9,7 +9,7 @@ import org.eclipse.jgit.lib.Ref
 /**
  * @see ResetCommand
  */
-class KResetCommand(asJ: ResetCommand): KGitCommand<ResetCommand, Ref?>(asJ) {
+class KResetCommand(asJ: ResetCommand) : KGitCommand<ResetCommand, Ref?>(asJ) {
     /**
      * @see ResetCommand.setRef
      */
