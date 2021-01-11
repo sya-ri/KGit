@@ -5,6 +5,32 @@ KGit is Kotlin Wrapper Library of [JGit](https://github.com/eclipse/jgit).
 - Null Safety Methods
 - Command Settings Available Using Lambda Function (No Method Chain)
 
+## Installation
+
+### build.gradle
+
+```groovy
+repositories {
+    maven { url 'https://dl.bintray.com/sya-ri/maven/' }
+}
+
+dependencies {
+    implementation 'com.github.syari:kgit:1.0.0'
+}
+```
+
+### build.gradle.kts
+
+```kotlin
+repositories {
+    maven(url = "https://dl.bintray.com/sya-ri/maven/")
+}
+
+dependencies {
+    implementation("com.github.syari:kgit:1.0.0")
+}
+```
+
 ## Develop
 
 ### Git Commit
