@@ -5,6 +5,13 @@ KGit is [JGit](https://github.com/eclipse/jgit) Kotlin wrapper library.
 
 ### Git Commit
 
+#### Before Commit
+Run the gradle task to check the code format.
+
+```
+gradle ktlintCheck
+```
+
 #### Template
 
 ```
