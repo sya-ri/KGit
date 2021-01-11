@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "com.github.syari.kgit"
-version = "1.0.1"
+version = "1.0.2"
 
 repositories {
     mavenCentral()
@@ -53,6 +53,21 @@ publishing {
             artifactId = "kgit"
             from(components["java"])
             artifact(sourceJar.get())
+            pom {
+                packaging = "pom"
+                name.set("KGit")
+                description.set("A concise description of my library")
+                url.set("https://github.com/sya-ri/KGit")
+                licenses {
+                    license {
+                        name.set("Eclipse Public License 2.0")
+                        url.set("https://www.eclipse.org/legal/epl-2.0/")
+                    }
+                }
+                scm {
+                    url.set("https://github.com/sya-ri/KGit.git")
+                }
+            }
         }
     }
 }
