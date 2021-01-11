@@ -239,6 +239,11 @@ class KGit(asJ: Git): AutoCloseable, KWrapper<Git>(asJ) {
     fun stashList(action: KStashListCommand.() -> Unit = {}) = KStashListCommand(asJ.stashList()).apply(action).call()
 
     /**
+     * @see Git.stashCreate
+     */
+    fun stashCreate(action: KStashCreateCommand.() -> Unit = {}) = KStashCreateCommand(asJ.stashCreate()).apply(action).call()
+
+    /**
      * @see Git.getRepository
      */
     val repository: Repository by asJ::repository
