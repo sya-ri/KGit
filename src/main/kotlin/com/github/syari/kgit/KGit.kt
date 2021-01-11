@@ -219,6 +219,11 @@ class KGit(asJ: Git): AutoCloseable, KWrapper<Git>(asJ) {
     fun submoduleDeinit(action: KSubmoduleDeinitCommand.() -> Unit = {}) = KSubmoduleDeinitCommand(asJ.submoduleDeinit()).apply(action).call()
 
     /**
+     * @see Git.submoduleStatus
+     */
+    fun submoduleStatus(action: KSubmoduleStatusCommand.() -> Unit = {}) = KSubmoduleStatusCommand(asJ.submoduleStatus()).apply(action).call()
+
+    /**
      * @see Git.getRepository
      */
     val repository: Repository by asJ::repository
