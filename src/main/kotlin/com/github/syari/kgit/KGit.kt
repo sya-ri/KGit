@@ -204,6 +204,11 @@ class KGit(asJ: Git): AutoCloseable, KWrapper<Git>(asJ) {
     fun tagDelete(action: KDeleteTagCommand.() -> Unit = {}) = KDeleteTagCommand(asJ.tagDelete()).apply(action).call()
 
     /**
+     * @see Git.submoduleAdd
+     */
+    fun submoduleAdd(action: KSubmoduleAddCommand.() -> Unit = {}) = KSubmoduleAddCommand(asJ.submoduleAdd()).apply(action).call()
+
+    /**
      * @see Git.getRepository
      */
     val repository: Repository by asJ::repository
