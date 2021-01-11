@@ -256,6 +256,11 @@ class KGit(asJ: Git): AutoCloseable, KWrapper<Git>(asJ) {
     fun stashDrop(action: KStashDropCommand.() -> Unit = {}) = KStashDropCommand(asJ.stashDrop()).apply(action).call()
 
     /**
+     * @see Git.apply
+     */
+    fun apply(action: KApplyCommand.() -> Unit = {}) = KApplyCommand(asJ.apply()).apply(action).call()
+
+    /**
      * @see Git.getRepository
      */
     val repository: Repository by asJ::repository
