@@ -34,4 +34,11 @@ publishing {
             }
         }
     }
+    publications {
+        register<MavenPublication>("gpr") {
+            groupId = "com.github.syari"
+            artifactId = "kgit"
+            from(components["kotlin"])
+        }
+    }
 }
