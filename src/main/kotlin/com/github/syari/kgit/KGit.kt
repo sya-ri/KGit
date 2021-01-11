@@ -194,6 +194,11 @@ class KGit(asJ: Git): AutoCloseable, KWrapper<Git>(asJ) {
     fun reflog(action: KReflogCommand.() -> Unit = {}) = KReflogCommand(asJ.reflog()).apply(action).call()
 
     /**
+     * @see Git.diff
+     */
+    fun diff(action: KDiffCommand.() -> Unit = {}) = KDiffCommand(asJ.diff()).apply(action).call()
+
+    /**
      * @see Git.getRepository
      */
     val repository: Repository by asJ::repository
