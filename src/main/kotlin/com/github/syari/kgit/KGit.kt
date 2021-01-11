@@ -159,6 +159,11 @@ class KGit(asJ: Git): AutoCloseable, KWrapper<Git>(asJ) {
     fun notesAdd(action: KAddNoteCommand.() -> Unit = {}) = KAddNoteCommand(asJ.notesAdd()).apply(action).call()
 
     /**
+     * @see Git.notesRemove
+     */
+    fun notesRemove(action: KRemoveNoteCommand.() -> Unit = {}) = KRemoveNoteCommand(asJ.notesRemove()).apply(action).call()
+
+    /**
      * @see Git.getRepository
      */
     val repository: Repository by asJ::repository
