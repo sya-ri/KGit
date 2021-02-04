@@ -1,14 +1,14 @@
 import org.jlleitschuh.gradle.ktlint.KtlintExtension
 
 plugins {
-    kotlin("jvm") version "1.4.21"
+    kotlin("jvm") version "1.4.30"
     id("org.jlleitschuh.gradle.ktlint") version "9.4.1"
     `maven-publish`
     signing
 }
 
 group = "com.github.syari.kgit"
-version = "1.0.3"
+version = "1.0.4"
 
 repositories {
     mavenCentral()
