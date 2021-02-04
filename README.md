@@ -1,5 +1,7 @@
 # KGit
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/sya-ri/KGit)](https://github.com/sya-ri/KGit/releases/latest) [![Bintray](https://img.shields.io/bintray/v/sya-ri/maven/KGit)](https://bintray.com/sya-ri/maven/KGit) [![Publish package to GitHub Packages](https://github.com/sya-ri/KGit/workflows/Publish%20package%20to%20GitHub%20Packages/badge.svg)](https://github.com/sya-ri/KGit/actions) [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/sya-ri/KGit)](https://github.com/sya-ri/KGit/releases/latest)
+[![maven-central](https://img.shields.io/maven-central/v/com.github.sya-ri/kgit)](https://search.maven.org/search?q=com.github.sya-ri.kgit)
+[![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 
 KGit is Kotlin Wrapper Library of [JGit](https://github.com/eclipse/jgit).
 - Null Safety Methods
@@ -11,11 +13,11 @@ KGit is Kotlin Wrapper Library of [JGit](https://github.com/eclipse/jgit).
 
 ```groovy
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 dependencies {
-    implementation 'com.github.syari:kgit:1.0.2'
+    implementation 'com.github.sya-ri:kgit:1.0.3'
 }
 ```
 
@@ -23,11 +25,11 @@ dependencies {
 
 ```kotlin
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 dependencies {
-    implementation("com.github.syari:kgit:1.0.2")
+    implementation("com.github.sya-ri:kgit:1.0.3")
 }
 ```
 

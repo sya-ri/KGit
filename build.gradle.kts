@@ -4,10 +4,11 @@ plugins {
     kotlin("jvm") version "1.4.21"
     id("org.jlleitschuh.gradle.ktlint") version "9.4.1"
     `maven-publish`
+    signing
 }
 
 group = "com.github.syari.kgit"
-version = "1.0.2"
+version = "1.0.3"
 
 repositories {
     mavenCentral()
@@ -25,43 +26,47 @@ configure<KtlintExtension> {
 
 val sourceJar by tasks.registering(Jar::class) {
     archiveClassifier.set("sources")
-    from(sourceSets.main.get().allJava.srcDirs)
+    from(sourceSets["main"].allSource)
 }
 
 publishing {
     repositories {
         maven {
-            name = "Bintray"
-            url = uri("https://api.bintray.com/maven/sya-ri/maven/KGit/;publish=1;override=1")
+            url = uri(
+                if (version.toString().endsWith("SNAPSHOT")) {
+                    "https://oss.sonatype.org/content/repositories/snapshots"
+                } else {
+                    "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+                }
+            )
             credentials {
-                username = System.getenv("BINTRAY_USER")
-                password = System.getenv("BINTRAY_KEY")
-            }
-        }
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/sya-ri/KGit")
-            credentials {
-                username = System.getenv("GITHUB_ACTOR")
-                password = System.getenv("GITHUB_TOKEN")
+                username = System.getenv("SONATYPE_USER")
+                password = System.getenv("SONATYPE_PASSWORD")
             }
         }
     }
     publications {
         register<MavenPublication>("maven") {
-            groupId = "com.github.syari"
+            groupId = "com.github.sya-ri"
             artifactId = "kgit"
-            from(components["java"])
+            from(components["kotlin"])
             artifact(sourceJar.get())
             pom {
                 packaging = "pom"
                 name.set("KGit")
-                description.set("A concise description of my library")
+                description.set("Kotlin Wrapper Library of JGit")
                 url.set("https://github.com/sya-ri/KGit")
                 licenses {
                     license {
                         name.set("Eclipse Public License 2.0")
                         url.set("https://www.eclipse.org/legal/epl-2.0/")
+                    }
+                }
+                developers {
+                    developer {
+                        id.set("sya-ri")
+                        name.set("sya-ri")
+                        email.set("sya79lua@gmail.com")
                     }
                 }
                 scm {
@@ -70,4 +75,8 @@ publishing {
             }
         }
     }
+}
+
+signing {
+    sign(publishing.publications["maven"])
 }
