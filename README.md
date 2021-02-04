@@ -33,6 +33,28 @@ dependencies {
 }
 ```
 
+## Examples
+
+### Clone Repository
+
+#### JGit
+```kotlin
+val git: Git = Git.cloneRepository()
+                  .setURI("https://github.com/sya-ri/KGit")
+                  .setTimeout(60)
+                  .setProgressMonitor(TextProgressMonitor())
+                  .call()
+```
+
+#### KGit
+```kotlin
+val git: KGit = KGit.cloneRepository {
+    setURI("https://github.com/sya-ri/KGit")
+    setTimeout(60)
+    setProgressMonitor(TextProgressMonitor())
+}
+```
+
 ## Develop
 
 ### Git Commit
