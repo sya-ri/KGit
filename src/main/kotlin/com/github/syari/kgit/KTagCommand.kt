@@ -3,6 +3,8 @@
 package com.github.syari.kgit
 
 import org.eclipse.jgit.api.TagCommand
+import org.eclipse.jgit.lib.GpgConfig
+import org.eclipse.jgit.lib.GpgObjectSigner
 import org.eclipse.jgit.lib.PersonIdent
 import org.eclipse.jgit.lib.Ref
 import org.eclipse.jgit.revwalk.RevObject
@@ -64,4 +66,18 @@ class KTagCommand(asJ: TagCommand) : KGitCommand<TagCommand, Ref>(asJ) {
             asJ.isAnnotated = value
         }
         get() = asJ.isAnnotated
+
+    /**
+     * @see TagCommand.setGpgSigner
+     */
+    fun setGpgSigner(signer: GpgObjectSigner?) {
+        asJ.setGpgSigner(signer)
+    }
+
+    /**
+     * @see TagCommand.setGpgConfig
+     */
+    fun setGpgConfig(config: GpgConfig?) {
+        asJ.setGpgConfig(config)
+    }
 }

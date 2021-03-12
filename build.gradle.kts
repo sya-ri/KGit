@@ -1,14 +1,14 @@
 import org.jlleitschuh.gradle.ktlint.KtlintExtension
 
 plugins {
-    kotlin("jvm") version "1.4.30"
+    kotlin("jvm") version "1.4.31"
     id("org.jlleitschuh.gradle.ktlint") version "10.0.0"
     `maven-publish`
     signing
 }
 
 group = "com.github.syari.kgit"
-version = "1.0.4"
+version = "1.0.5"
 
 repositories {
     mavenCentral()
@@ -17,7 +17,7 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib"))
-    api("org.eclipse.jgit:org.eclipse.jgit:5.10.0.202012080955-r")
+    api("org.eclipse.jgit:org.eclipse.jgit:5.11.0.202103091610-r")
 }
 
 configure<KtlintExtension> {
