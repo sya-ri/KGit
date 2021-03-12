@@ -17,7 +17,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.sya-ri:kgit:1.0.4'
+    implementation 'com.github.sya-ri:kgit:1.0.5'
 }
 ```
 
@@ -29,7 +29,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.sya-ri:kgit:1.0.4")
+    implementation("com.github.sya-ri:kgit:1.0.5")
 }
 ```
 
