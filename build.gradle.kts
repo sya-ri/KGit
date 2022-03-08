@@ -17,7 +17,7 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib"))
-    api("org.eclipse.jgit:org.eclipse.jgit:5.11.0.202103091610-r")
+    api("org.eclipse.jgit:org.eclipse.jgit:6.1.0.202203080745-r")
 }
 
 configure<KtlintExtension> {
