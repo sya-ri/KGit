@@ -2,7 +2,7 @@ import org.jlleitschuh.gradle.ktlint.KtlintExtension
 
 plugins {
     kotlin("jvm") version "1.4.31"
-    id("org.jlleitschuh.gradle.ktlint") version "10.0.0"
+    id("org.jlleitschuh.gradle.ktlint") version "11.2.0"
     `maven-publish`
     signing
 }
