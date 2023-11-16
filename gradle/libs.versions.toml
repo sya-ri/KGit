@@ -1,0 +1,14 @@
+[versions]
+# Plugins
+kotlin = "1.9.20"
+kotlinter = "4.1.0"
+
+# Libraries
+jgit = "5.11.0.202103091610-r"
+
+[plugins]
+kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlinter = { id = "org.jmailen.kotlinter", version.ref = "kotlinter" }
+
+[libraries]
+jgit = { group = "org.eclipse.jgit", name = "org.eclipse.jgit", version.ref = "jgit" }

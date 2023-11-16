@@ -1,6 +1,6 @@
 plugins {
-    kotlin("jvm") version "1.9.20"
-    id("org.jmailen.kotlinter") version "4.1.0"
+    alias(libs.plugins.kotlin)
+    alias(libs.plugins.kotlinter)
     `maven-publish`
     signing
 }
@@ -15,7 +15,7 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib"))
-    api("org.eclipse.jgit:org.eclipse.jgit:5.11.0.202103091610-r")
+    api(libs.jgit)
 }
 
 val sourceJar by tasks.registering(Jar::class) {
