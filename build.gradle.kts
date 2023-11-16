@@ -34,8 +34,8 @@ publishing {
                 },
             )
             credentials {
-                username = System.getenv("SONATYPE_USER")
-                password = System.getenv("SONATYPE_PASSWORD")
+                username = properties["sonatypeUsername"].toString()
+                password = properties["sonatypePassword"].toString()
             }
         }
     }
@@ -60,7 +60,7 @@ publishing {
                     developer {
                         id.set("sya-ri")
                         name.set("sya-ri")
-                        email.set("sya79lua@gmail.com")
+                        email.set("contact@s7a.dev")
                     }
                 }
                 scm {
@@ -72,5 +72,9 @@ publishing {
 }
 
 signing {
+    val key = properties["signingKey"]?.toString()?.replace("\\n", "\n")
+    val password = properties["signingPassword"]?.toString()
+
+    useInMemoryPgpKeys(key, password)
     sign(publishing.publications["maven"])
 }
