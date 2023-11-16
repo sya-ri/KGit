@@ -6,32 +6,7 @@
 KGit is Kotlin Wrapper Library of [JGit](https://eclipse.org/jgit).
 - Null Safety Methods
 - Command Settings Available Using Lambda Function (No Method Chain)
-
-## Installation
-
-### build.gradle
-
-```groovy
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    implementation 'com.github.sya-ri:kgit:1.0.5'
-}
-```
-
-### build.gradle.kts
-
-```kotlin
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    implementation("com.github.sya-ri:kgit:1.0.5")
-}
-```
+- Support JGit features: `6.7.0.202309050840-r`
 
 ## Examples
 
@@ -52,6 +27,37 @@ val git: KGit = KGit.cloneRepository {
     setURI("https://github.com/sya-ri/KGit")
     setTimeout(60)
     setProgressMonitor(TextProgressMonitor())
+}
+```
+
+## Installation
+
+> [!TIP]
+>
+> - KGit bundles `org.eclipse.jgit:org.eclipse.jgit`.
+> - Install the jgit extension library if necessary.
+
+### build.gradle
+
+```groovy
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.github.sya-ri:kgit:1.0.6'
+}
+```
+
+### build.gradle.kts
+
+```kotlin
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation("com.github.sya-ri:kgit:1.0.6")
 }
 ```
 
