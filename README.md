@@ -63,7 +63,7 @@ val git: KGit = KGit.cloneRepository {
 Run the gradle task to check the code format.
 
 ```
-gradle ktlintCheck
+gradle lintKotlin
 ```
 
 #### Template

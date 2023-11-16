@@ -1,8 +1,6 @@
-import org.jlleitschuh.gradle.ktlint.KtlintExtension
-
 plugins {
-    kotlin("jvm") version "1.4.31"
-    id("org.jlleitschuh.gradle.ktlint") version "10.0.0"
+    kotlin("jvm") version "1.9.20"
+    id("org.jmailen.kotlinter") version "4.1.0"
     `maven-publish`
     signing
 }
@@ -20,10 +18,6 @@ dependencies {
     api("org.eclipse.jgit:org.eclipse.jgit:5.11.0.202103091610-r")
 }
 
-configure<KtlintExtension> {
-    version.set("0.40.0")
-}
-
 val sourceJar by tasks.registering(Jar::class) {
     archiveClassifier.set("sources")
     from(sourceSets["main"].allSource)
@@ -37,7 +31,7 @@ publishing {
                     "https://oss.sonatype.org/content/repositories/snapshots"
                 } else {
                     "https://oss.sonatype.org/service/local/staging/deploy/maven2"
-                }
+                },
             )
             credentials {
                 username = System.getenv("SONATYPE_USER")
