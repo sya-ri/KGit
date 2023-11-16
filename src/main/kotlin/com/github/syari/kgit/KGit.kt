@@ -296,6 +296,11 @@ class KGit(asJ: Git) : AutoCloseable, KWrapper<Git>(asJ) {
     fun remoteSetUrl(action: KRemoteSetUrlCommand.() -> Unit = {}) = KRemoteSetUrlCommand(asJ.remoteSetUrl()).apply(action).call()
 
     /**
+     * @see Git.verifySignature
+     */
+    fun verifySignature(action: KVerifySignatureCommand.() -> Unit = {}) = KVerifySignatureCommand(asJ.verifySignature()).apply(action).call()
+
+    /**
      * @see Git.getRepository
      */
     val repository: Repository by asJ::repository

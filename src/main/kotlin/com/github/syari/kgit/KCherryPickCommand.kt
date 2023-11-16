@@ -7,6 +7,7 @@ import org.eclipse.jgit.api.CherryPickResult
 import org.eclipse.jgit.lib.AnyObjectId
 import org.eclipse.jgit.lib.ProgressMonitor
 import org.eclipse.jgit.lib.Ref
+import org.eclipse.jgit.merge.ContentMergeStrategy
 import org.eclipse.jgit.merge.MergeStrategy
 
 /**
@@ -53,6 +54,13 @@ class KCherryPickCommand(asJ: CherryPickCommand) : KGitCommand<CherryPickCommand
      */
     fun setStrategy(strategy: MergeStrategy) {
         asJ.setStrategy(strategy)
+    }
+
+    /**
+     * @see CherryPickCommand.setContentMergeStrategy
+     */
+    fun setContentMergeStrategy(strategy: ContentMergeStrategy?) {
+        asJ.setContentMergeStrategy(strategy)
     }
 
     /**

@@ -5,10 +5,12 @@ package com.github.syari.kgit
 import org.eclipse.jgit.api.PushCommand
 import org.eclipse.jgit.lib.ProgressMonitor
 import org.eclipse.jgit.lib.Ref
+import org.eclipse.jgit.transport.PushConfig
 import org.eclipse.jgit.transport.PushResult
 import org.eclipse.jgit.transport.RefLeaseSpec
 import org.eclipse.jgit.transport.RefSpec
 import java.io.OutputStream
+import java.io.PrintStream
 
 /**
  * @see PushCommand
@@ -19,6 +21,20 @@ class KPushCommand(asJ: PushCommand) : KTransportCommand<PushCommand, Iterable<P
      * @see PushCommand.getRemote
      */
     var remote: String by asJ::remote
+
+    /**
+     * @see PushCommand.setHookOutputStream
+     */
+    fun setHookOutputStream(redirect: PrintStream?) {
+        asJ.setHookOutputStream(redirect)
+    }
+
+    /**
+     * @see PushCommand.setHookErrorStream
+     */
+    fun setHookErrorStream(redirect: PrintStream?) {
+        asJ.setHookErrorStream(redirect)
+    }
 
     /**
      * @see PushCommand.setReceivePack
@@ -62,6 +78,12 @@ class KPushCommand(asJ: PushCommand) : KTransportCommand<PushCommand, Iterable<P
     fun setRefSpecs(vararg specs: RefSpec) {
         asJ.setRefSpecs(*specs)
     }
+
+    /**
+     * @see PushCommand.setPushDefault
+     * @see PushCommand.getPushDefault
+     */
+    var pushDefault: PushConfig.PushDefault by asJ::pushDefault
 
     /**
      * @see PushCommand.setPushAll
@@ -110,6 +132,16 @@ class KPushCommand(asJ: PushCommand) : KTransportCommand<PushCommand, Iterable<P
             asJ.isThin = value
         }
         get() = asJ.isThin
+
+    /**
+     * @see PushCommand.setUseBitmaps
+     * @see PushCommand.isUseBitmaps
+     */
+    var isUseBitmaps: Boolean
+        set(value) {
+            asJ.isUseBitmaps = value
+        }
+        get() = asJ.isUseBitmaps
 
     /**
      * @see PushCommand.setAtomic

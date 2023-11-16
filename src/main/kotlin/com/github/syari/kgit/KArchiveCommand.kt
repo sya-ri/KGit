@@ -39,6 +39,13 @@ class KArchiveCommand(asJ: ArchiveCommand) : KGitCommand<ArchiveCommand, OutputS
     }
 
     /**
+     * @see ArchiveCommand.setFormat
+     */
+    fun setFormat(fmt: String?) {
+        asJ.setFormat(fmt)
+    }
+
+    /**
      * @see ArchiveCommand.setFormatOptions
      */
     fun setFormatOptions(options: Map<String, Any>) {

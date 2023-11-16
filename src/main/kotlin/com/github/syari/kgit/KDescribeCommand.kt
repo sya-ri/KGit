@@ -52,6 +52,13 @@ class KDescribeCommand(asJ: DescribeCommand) : KGitCommand<DescribeCommand, Stri
     }
 
     /**
+     * @see DescribeCommand.setAbbrev
+     */
+    fun setAbbrev(abbrev: Int) {
+        asJ.setAbbrev(abbrev)
+    }
+
+    /**
      * @see DescribeCommand.setMatch
      */
     fun setMatch(vararg patterns: String) {

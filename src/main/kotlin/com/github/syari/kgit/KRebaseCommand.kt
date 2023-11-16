@@ -6,6 +6,7 @@ import org.eclipse.jgit.api.RebaseCommand
 import org.eclipse.jgit.api.RebaseResult
 import org.eclipse.jgit.lib.AnyObjectId
 import org.eclipse.jgit.lib.ProgressMonitor
+import org.eclipse.jgit.merge.ContentMergeStrategy
 import org.eclipse.jgit.merge.MergeStrategy
 import org.eclipse.jgit.revwalk.RevCommit
 
@@ -81,6 +82,13 @@ class KRebaseCommand(asJ: RebaseCommand) : KGitCommand<RebaseCommand, RebaseResu
      */
     fun setStrategy(strategy: MergeStrategy) {
         asJ.setStrategy(strategy)
+    }
+
+    /**
+     * @see RebaseCommand.setContentMergeStrategy
+     */
+    fun setContentMergeStrategy(strategy: ContentMergeStrategy?) {
+        asJ.setContentMergeStrategy(strategy)
     }
 
     /**

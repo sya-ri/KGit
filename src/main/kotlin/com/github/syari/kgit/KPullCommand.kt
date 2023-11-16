@@ -8,6 +8,7 @@ import org.eclipse.jgit.api.PullResult
 import org.eclipse.jgit.lib.BranchConfig.BranchRebaseMode
 import org.eclipse.jgit.lib.ProgressMonitor
 import org.eclipse.jgit.lib.SubmoduleConfig
+import org.eclipse.jgit.merge.ContentMergeStrategy
 import org.eclipse.jgit.merge.MergeStrategy
 import org.eclipse.jgit.transport.TagOpt
 
@@ -51,6 +52,13 @@ class KPullCommand(asJ: PullCommand) : KTransportCommand<PullCommand, PullResult
      */
     fun setStrategy(strategy: MergeStrategy) {
         asJ.setStrategy(strategy)
+    }
+
+    /**
+     * @see PullCommand.setContentMergeStrategy
+     */
+    fun setContentMergeStrategy(strategy: ContentMergeStrategy?) {
+        asJ.setContentMergeStrategy(strategy)
     }
 
     /**

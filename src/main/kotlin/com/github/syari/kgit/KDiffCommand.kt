@@ -49,6 +49,13 @@ class KDiffCommand(asJ: DiffCommand) : KGitCommand<DiffCommand, List<DiffEntry>>
     }
 
     /**
+     * @see DiffCommand.setShowNameOnly
+     */
+    fun setShowNameOnly(showNameOnly: Boolean) {
+        asJ.setShowNameOnly(showNameOnly)
+    }
+
+    /**
      * @see DiffCommand.setOutputStream
      */
     fun setOutputStream(out: OutputStream) {

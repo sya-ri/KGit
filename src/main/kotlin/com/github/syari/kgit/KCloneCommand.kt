@@ -4,10 +4,13 @@ package com.github.syari.kgit
 
 import org.eclipse.jgit.api.CloneCommand
 import org.eclipse.jgit.api.Git
+import org.eclipse.jgit.lib.ObjectId
 import org.eclipse.jgit.lib.ProgressMonitor
 import org.eclipse.jgit.transport.TagOpt
 import org.eclipse.jgit.util.FS
 import java.io.File
+import java.time.Instant
+import java.time.OffsetDateTime
 
 /**
  * @see CloneCommand
@@ -117,9 +120,44 @@ class KCloneCommand(asJ: CloneCommand = CloneCommand()) : KTransportCommand<Clon
     }
 
     /**
-     * @see CloneCommand.Callback
+     * @see CloneCommand.setCallback
      */
     fun setCallback(callback: CloneCommand.Callback?) {
         asJ.setCallback(callback)
+    }
+
+    /**
+     * @see CloneCommand.setDepth
+     */
+    fun setDepth(depth: Int) {
+        asJ.setDepth(depth)
+    }
+
+    /**
+     * @see CloneCommand.setShallowSince
+     */
+    fun setShallowSince(shallowSince: OffsetDateTime) {
+        asJ.setShallowSince(shallowSince)
+    }
+
+    /**
+     * @see CloneCommand.setShallowSince
+     */
+    fun setShallowSince(shallowSince: Instant) {
+        asJ.setShallowSince(shallowSince)
+    }
+
+    /**
+     * @see CloneCommand.addShallowExclude
+     */
+    fun addShallowExclude(shallowExclude: String) {
+        asJ.addShallowExclude(shallowExclude)
+    }
+
+    /**
+     * @see CloneCommand.addShallowExclude
+     */
+    fun addShallowExclude(shallowExclude: ObjectId) {
+        asJ.addShallowExclude(shallowExclude)
     }
 }

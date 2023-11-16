@@ -4,6 +4,7 @@ package com.github.syari.kgit
 
 import org.eclipse.jgit.api.StashApplyCommand
 import org.eclipse.jgit.lib.ObjectId
+import org.eclipse.jgit.merge.ContentMergeStrategy
 import org.eclipse.jgit.merge.MergeStrategy
 
 /**
@@ -36,6 +37,13 @@ class KStashApplyCommand(asJ: StashApplyCommand) : KGitCommand<StashApplyCommand
      */
     fun setStrategy(strategy: MergeStrategy) {
         asJ.setStrategy(strategy)
+    }
+
+    /**
+     * @see StashApplyCommand.setContentMergeStrategy
+     */
+    fun setContentMergeStrategy(strategy: ContentMergeStrategy?) {
+        asJ.setContentMergeStrategy(strategy)
     }
 
     /**

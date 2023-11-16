@@ -8,6 +8,7 @@ import org.eclipse.jgit.lib.GpgObjectSigner
 import org.eclipse.jgit.lib.PersonIdent
 import org.eclipse.jgit.lib.Ref
 import org.eclipse.jgit.revwalk.RevObject
+import org.eclipse.jgit.transport.CredentialsProvider
 
 /**
  * @see TagCommand
@@ -34,6 +35,20 @@ class KTagCommand(asJ: TagCommand) : KGitCommand<TagCommand, Ref>(asJ) {
             asJ.isSigned = value
         }
         get() = asJ.isSigned
+
+    /**
+     * @see TagCommand.setGpgSigner
+     */
+    fun setGpgSigner(signer: GpgObjectSigner?) {
+        asJ.setGpgSigner(signer)
+    }
+
+    /**
+     * @see TagCommand.setGpgConfig
+     */
+    fun setGpgConfig(config: GpgConfig?) {
+        asJ.setGpgConfig(config)
+    }
 
     /**
      * @see TagCommand.setTagger
@@ -68,16 +83,15 @@ class KTagCommand(asJ: TagCommand) : KGitCommand<TagCommand, Ref>(asJ) {
         get() = asJ.isAnnotated
 
     /**
-     * @see TagCommand.setGpgSigner
+     * @see TagCommand.setSigningKey
+     * @see TagCommand.getSigningKey
      */
-    fun setGpgSigner(signer: GpgObjectSigner?) {
-        asJ.setGpgSigner(signer)
-    }
+    var signingKey: String? by asJ::signingKey
 
     /**
-     * @see TagCommand.setGpgConfig
+     * @see TagCommand.setCredentialsProvider
      */
-    fun setGpgConfig(config: GpgConfig?) {
-        asJ.setGpgConfig(config)
+    fun setCredentialsProvider(credentialsProvider: CredentialsProvider?) {
+        asJ.setCredentialsProvider(credentialsProvider)
     }
 }

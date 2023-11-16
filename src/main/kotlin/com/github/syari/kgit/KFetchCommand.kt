@@ -3,11 +3,14 @@
 package com.github.syari.kgit
 
 import org.eclipse.jgit.api.FetchCommand
+import org.eclipse.jgit.lib.ObjectId
 import org.eclipse.jgit.lib.ProgressMonitor
 import org.eclipse.jgit.lib.SubmoduleConfig
 import org.eclipse.jgit.transport.FetchResult
 import org.eclipse.jgit.transport.RefSpec
 import org.eclipse.jgit.transport.TagOpt
+import java.time.Instant
+import java.time.OffsetDateTime
 
 /**
  * @see FetchCommand
@@ -111,6 +114,13 @@ class KFetchCommand(asJ: FetchCommand) : KTransportCommand<FetchCommand, FetchRe
     }
 
     /**
+     * @see FetchCommand.setInitialBranch
+     */
+    fun setInitialBranch(branch: String?) {
+        asJ.setInitialBranch(branch)
+    }
+
+    /**
      * @see FetchCommand.setCallback
      */
     fun setCallback(callback: FetchCommand.Callback) {
@@ -126,4 +136,46 @@ class KFetchCommand(asJ: FetchCommand) : KTransportCommand<FetchCommand, FetchRe
             asJ.isForceUpdate = value
         }
         get() = asJ.isForceUpdate
+
+    /**
+     * @see FetchCommand.setDepth
+     */
+    fun setDepth(depth: Int) {
+        asJ.setDepth(depth)
+    }
+
+    /**
+     * @see FetchCommand.setShallowSince
+     */
+    fun setShallowSince(shallowSince: OffsetDateTime) {
+        asJ.setShallowSince(shallowSince)
+    }
+
+    /**
+     * @see FetchCommand.setShallowSince
+     */
+    fun setShallowSince(shallowSince: Instant) {
+        asJ.setShallowSince(shallowSince)
+    }
+
+    /**
+     * @see FetchCommand.addShallowExclude
+     */
+    fun addShallowExclude(shallowExclude: String) {
+        asJ.addShallowExclude(shallowExclude)
+    }
+
+    /**
+     * @see FetchCommand.addShallowExclude
+     */
+    fun addShallowExclude(shallowExclude: ObjectId) {
+        asJ.addShallowExclude(shallowExclude)
+    }
+
+    /**
+     * @see FetchCommand.setUnshallow
+     */
+    fun setUnshallow(unshallow: Boolean) {
+        asJ.setUnshallow(unshallow)
+    }
 }

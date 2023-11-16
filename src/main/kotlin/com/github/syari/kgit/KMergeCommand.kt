@@ -7,6 +7,7 @@ import org.eclipse.jgit.api.MergeResult
 import org.eclipse.jgit.lib.AnyObjectId
 import org.eclipse.jgit.lib.ProgressMonitor
 import org.eclipse.jgit.lib.Ref
+import org.eclipse.jgit.merge.ContentMergeStrategy
 import org.eclipse.jgit.merge.MergeStrategy
 
 class KMergeCommand(asJ: MergeCommand) : KGitCommand<MergeCommand, MergeResult>(asJ) {
@@ -15,6 +16,13 @@ class KMergeCommand(asJ: MergeCommand) : KGitCommand<MergeCommand, MergeResult>(
      */
     fun setStrategy(mergeStrategy: MergeStrategy) {
         asJ.setStrategy(mergeStrategy)
+    }
+
+    /**
+     * @see MergeCommand.setContentMergeStrategy
+     */
+    fun setContentMergeStrategy(strategy: ContentMergeStrategy?) {
+        asJ.setContentMergeStrategy(strategy)
     }
 
     /**

@@ -50,4 +50,11 @@ class KInitCommand(private val asJ: InitCommand = InitCommand()) : Callable<Git>
     fun setFs(fs: FS?) {
         asJ.setFs(fs)
     }
+
+    /**
+     * @see InitCommand.setInitialBranch
+     */
+    fun setInitialBranch(branch: String?) {
+        asJ.setInitialBranch(branch)
+    }
 }

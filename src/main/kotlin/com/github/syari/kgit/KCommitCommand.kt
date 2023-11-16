@@ -3,6 +3,7 @@
 package com.github.syari.kgit
 
 import org.eclipse.jgit.api.CommitCommand
+import org.eclipse.jgit.lib.CommitConfig
 import org.eclipse.jgit.lib.GpgConfig
 import org.eclipse.jgit.lib.GpgSigner
 import org.eclipse.jgit.lib.PersonIdent
@@ -19,6 +20,27 @@ class KCommitCommand(asJ: CommitCommand) : KGitCommand<CommitCommand, RevCommit>
      * @see CommitCommand.getMessage
      */
     var message: String? by asJ::message
+
+    /**
+     * @see CommitCommand.setCleanupMode
+     */
+    fun setCleanupMode(mode: CommitConfig.CleanupMode) {
+        asJ.setCleanupMode(mode)
+    }
+
+    /**
+     * @see CommitCommand.setDefaultClean
+     */
+    fun setDefaultClean(strip: Boolean) {
+        asJ.setDefaultClean(strip)
+    }
+
+    /**
+     * @see CommitCommand.setCommentCharacter
+     */
+    fun setCommentCharacter(commentChar: Char) {
+        asJ.setCommentCharacter(commentChar)
+    }
 
     /**
      * @see CommitCommand.setAllowEmpty
@@ -140,13 +162,6 @@ class KCommitCommand(asJ: CommitCommand) : KGitCommand<CommitCommand, RevCommit>
     }
 
     /**
-     * @see CommitCommand.setCredentialsProvider
-     */
-    fun setCredentialsProvider(credentialsProvider: CredentialsProvider?) {
-        asJ.setCredentialsProvider(credentialsProvider)
-    }
-
-    /**
      * @see CommitCommand.setGpgSigner
      */
     fun setGpgSigner(signer: GpgSigner?) {
@@ -158,5 +173,12 @@ class KCommitCommand(asJ: CommitCommand) : KGitCommand<CommitCommand, RevCommit>
      */
     fun setGpgConfig(config: GpgConfig?) {
         asJ.setGpgConfig(config)
+    }
+
+    /**
+     * @see CommitCommand.setCredentialsProvider
+     */
+    fun setCredentialsProvider(credentialsProvider: CredentialsProvider?) {
+        asJ.setCredentialsProvider(credentialsProvider)
     }
 }
