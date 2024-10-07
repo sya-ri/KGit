@@ -4,9 +4,9 @@ package com.github.syari.kgit
 
 import org.eclipse.jgit.api.TagCommand
 import org.eclipse.jgit.lib.GpgConfig
-import org.eclipse.jgit.lib.Signer
 import org.eclipse.jgit.lib.PersonIdent
 import org.eclipse.jgit.lib.Ref
+import org.eclipse.jgit.lib.Signer
 import org.eclipse.jgit.revwalk.RevObject
 import org.eclipse.jgit.transport.CredentialsProvider
 
