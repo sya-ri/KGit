@@ -2,6 +2,7 @@
 # Plugins
 kotlin = "1.9.20"
 kotlinter = "4.1.0"
+versions = "0.51.0"
 
 # Libraries
 jgit = "6.7.0.202309050840-r"
@@ -9,6 +10,7 @@ jgit = "6.7.0.202309050840-r"
 [plugins]
 kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlinter = { id = "org.jmailen.kotlinter", version.ref = "kotlinter" }
+versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }
 
 [libraries]
 jgit = { group = "org.eclipse.jgit", name = "org.eclipse.jgit", version.ref = "jgit" }

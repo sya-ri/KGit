@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.kotlin)
     alias(libs.plugins.kotlinter)
+    alias(libs.plugins.versions)
     `maven-publish`
     signing
 }
