@@ -1,7 +1,7 @@
 [versions]
 # Plugins
-kotlin = "1.9.20"
-kotlinter = "4.1.0"
+kotlin = "2.0.20"
+kotlinter = "4.4.1"
 versions = "0.51.0"
 
 # Libraries

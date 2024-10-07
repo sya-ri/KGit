@@ -10,7 +10,9 @@ import java.io.File
 /**
  * @see Git
  */
-class KGit(asJ: Git) : AutoCloseable, KWrapper<Git>(asJ) {
+class KGit(asJ: Git) :
+    KWrapper<Git>(asJ),
+    AutoCloseable {
     companion object {
         /**
          * @see Git.open
