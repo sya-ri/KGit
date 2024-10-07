@@ -3,6 +3,7 @@
 package com.github.syari.kgit
 
 import org.eclipse.jgit.api.CherryPickCommand
+import org.eclipse.jgit.api.CherryPickCommitMessageProvider
 import org.eclipse.jgit.api.CherryPickResult
 import org.eclipse.jgit.lib.AnyObjectId
 import org.eclipse.jgit.lib.ProgressMonitor
@@ -40,6 +41,13 @@ class KCherryPickCommand(asJ: CherryPickCommand) : KGitCommand<CherryPickCommand
      */
     fun setOurCommitName(ourCommitName: String?) {
         asJ.setOurCommitName(ourCommitName)
+    }
+
+    /**
+     * @see CherryPickCommand.setCherryPickCommitMessageProvider
+     */
+    fun setCherryPickCommitMessageProvider(provider: CherryPickCommitMessageProvider) {
+        asJ.setCherryPickCommitMessageProvider(provider)
     }
 
     /**

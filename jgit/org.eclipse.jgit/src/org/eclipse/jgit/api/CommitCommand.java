@@ -16,7 +16,6 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.jgit.annotations.NonNull;
@@ -52,9 +51,6 @@ import org.eclipse.jgit.lib.CommitConfig.CleanupMode;
 import org.eclipse.jgit.lib.Constants;
 import org.eclipse.jgit.lib.FileMode;
 import org.eclipse.jgit.lib.GpgConfig;
-import org.eclipse.jgit.lib.GpgConfig.GpgFormat;
-import org.eclipse.jgit.lib.GpgObjectSigner;
-import org.eclipse.jgit.lib.GpgSigner;
 import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.ObjectInserter;
 import org.eclipse.jgit.lib.PersonIdent;
@@ -63,6 +59,8 @@ import org.eclipse.jgit.lib.RefUpdate;
 import org.eclipse.jgit.lib.RefUpdate.Result;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.lib.RepositoryState;
+import org.eclipse.jgit.lib.Signer;
+import org.eclipse.jgit.lib.Signers;
 import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.revwalk.RevObject;
 import org.eclipse.jgit.revwalk.RevTag;
@@ -109,7 +107,7 @@ public class CommitCommand extends GitCommand<RevCommit> {
 	 * parents this commit should have. The current HEAD will be in this list
 	 * and also all commits mentioned in .git/MERGE_HEAD
 	 */
-	private List<ObjectId> parents = new LinkedList<>();
+	private List<ObjectId> parents = new ArrayList<>();
 
 	private String reflogComment;
 
@@ -130,7 +128,7 @@ public class CommitCommand extends GitCommand<RevCommit> {
 
 	private String signingKey;
 
-	private GpgSigner gpgSigner;
+	private Signer signer;
 
 	private GpgConfig gpgConfig;
 
@@ -320,30 +318,22 @@ public class CommitCommand extends GitCommand<RevCommit> {
 		}
 	}
 
-	private void sign(CommitBuilder commit) throws ServiceUnavailableException,
-			CanceledException, UnsupportedSigningFormatException {
-		if (gpgSigner == null) {
-			gpgSigner = GpgSigner.getDefault();
-			if (gpgSigner == null) {
-				throw new ServiceUnavailableException(
-						JGitText.get().signingServiceUnavailable);
+	private void sign(CommitBuilder commit)
+			throws CanceledException, IOException,
+			UnsupportedSigningFormatException {
+		if (signer == null) {
+			signer = Signers.get(gpgConfig.getKeyFormat());
+			if (signer == null) {
+				throw new UnsupportedSigningFormatException(MessageFormat
+						.format(JGitText.get().signatureTypeUnknown,
+								gpgConfig.getKeyFormat().toConfigValue()));
 			}
 		}
 		if (signingKey == null) {
 			signingKey = gpgConfig.getSigningKey();
 		}
-		if (gpgSigner instanceof GpgObjectSigner) {
-			((GpgObjectSigner) gpgSigner).signObject(commit,
-					signingKey, committer, credentialsProvider,
-					gpgConfig);
-		} else {
-			if (gpgConfig.getKeyFormat() != GpgFormat.OPENPGP) {
-				throw new UnsupportedSigningFormatException(JGitText
-						.get().onlyOpenPgpSupportedForSigning);
-			}
-			gpgSigner.sign(commit, signingKey, committer,
-					credentialsProvider);
-		}
+		signer.signObject(repo, gpgConfig, commit, committer, signingKey,
+				credentialsProvider);
 	}
 
 	private void updateRef(RepositoryState state, ObjectId headId,
@@ -614,7 +604,7 @@ public class CommitCommand extends GitCommand<RevCommit> {
 			// specified the commit should not be empty. This behaviour differs
 			// from native git but can only be adapted in the next release.
 			// TODO(ch) align the defaults with native git
-			allowEmpty = (only.isEmpty()) ? Boolean.TRUE : Boolean.FALSE;
+			allowEmpty = only.isEmpty() ? Boolean.TRUE : Boolean.FALSE;
 
 		// when doing a merge commit parse MERGE_HEAD and MERGE_MSG files
 		if (state == RepositoryState.MERGING_RESOLVED
@@ -1098,22 +1088,22 @@ public class CommitCommand extends GitCommand<RevCommit> {
 	}
 
 	/**
-	 * Sets the {@link GpgSigner} to use if the commit is to be signed.
+	 * Sets the {@link Signer} to use if the commit is to be signed.
 	 *
 	 * @param signer
 	 *            to use; if {@code null}, the default signer will be used
 	 * @return {@code this}
-	 * @since 5.11
+	 * @since 7.0
 	 */
-	public CommitCommand setGpgSigner(GpgSigner signer) {
+	public CommitCommand setSigner(Signer signer) {
 		checkCallable();
-		this.gpgSigner = signer;
+		this.signer = signer;
 		return this;
 	}
 
 	/**
 	 * Sets an external {@link GpgConfig} to use. Whether it will be used is at
-	 * the discretion of the {@link #setGpgSigner(GpgSigner)}.
+	 * the discretion of the {@link #setSigner(Signer)}.
 	 *
 	 * @param config
 	 *            to set; if {@code null}, the config will be loaded from the

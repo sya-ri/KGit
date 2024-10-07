@@ -3,7 +3,6 @@ package com.github.syari.kgit
 import org.eclipse.jgit.api.VerificationResult
 import org.eclipse.jgit.api.VerifySignatureCommand
 import org.eclipse.jgit.lib.GpgConfig
-import org.eclipse.jgit.lib.GpgSignatureVerifier
 
 class KVerifySignatureCommand(asJ: VerifySignatureCommand) : KGitCommand<VerifySignatureCommand, Map<String, VerificationResult>>(asJ) {
     /**
@@ -33,12 +32,6 @@ class KVerifySignatureCommand(asJ: VerifySignatureCommand) : KGitCommand<VerifyS
     fun setMode(mode: VerifySignatureCommand.VerifyMode) {
         asJ.setMode(mode)
     }
-
-    /**
-     * @see VerifySignatureCommand.setVerifier
-     * @see VerifySignatureCommand.getVerifier
-     */
-    val verifier: GpgSignatureVerifier? by asJ::verifier
 
     /**
      * @see VerifySignatureCommand.setGpgConfig

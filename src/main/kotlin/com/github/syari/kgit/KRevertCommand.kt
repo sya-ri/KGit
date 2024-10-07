@@ -70,4 +70,11 @@ class KRevertCommand(asJ: RevertCommand) : KGitCommand<RevertCommand, RevCommit?
     fun setProgressMonitor(monitor: ProgressMonitor?) {
         asJ.setProgressMonitor(monitor)
     }
+
+    /**
+     * @see RevertCommand.setInsertChangeId
+     */
+    fun setInsertChangeId(insertChangeId: Boolean) {
+        asJ.setInsertChangeId(insertChangeId)
+    }
 }

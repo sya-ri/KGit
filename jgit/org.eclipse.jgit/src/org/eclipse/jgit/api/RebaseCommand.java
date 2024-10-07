@@ -23,7 +23,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -289,13 +288,17 @@ public class RebaseCommand extends GitCommand<RebaseResult> {
 					}
 				}
 				RebaseResult res = initFilesAndRewind();
-				if (stopAfterInitialization)
+				if (stopAfterInitialization) {
 					return RebaseResult.INTERACTIVE_PREPARED_RESULT;
+				}
 				if (res != null) {
-					autoStashApply();
-					if (rebaseState.getDir().exists())
+					if (!autoStashApply()) {
+						res = RebaseResult.STASH_APPLY_CONFLICTS_RESULT;
+					}
+					if (rebaseState.getDir().exists()) {
 						FileUtils.delete(rebaseState.getDir(),
 								FileUtils.RECURSIVE);
+					}
 					return res;
 				}
 			}
@@ -381,7 +384,7 @@ public class RebaseCommand extends GitCommand<RebaseResult> {
 	}
 
 	private boolean autoStashApply() throws IOException, GitAPIException {
-		boolean conflicts = false;
+		boolean success = true;
 		if (rebaseState.getFile(AUTOSTASH).exists()) {
 			String stash = rebaseState.readFile(AUTOSTASH);
 			try (Git git = Git.wrap(repo)) {
@@ -389,7 +392,7 @@ public class RebaseCommand extends GitCommand<RebaseResult> {
 						.ignoreRepositoryState(true).setStrategy(strategy)
 						.call();
 			} catch (StashApplyFailureException e) {
-				conflicts = true;
+				success = false;
 				try (RevWalk rw = new RevWalk(repo)) {
 					ObjectId stashId = repo.resolve(stash);
 					RevCommit commit = rw.parseCommit(stashId);
@@ -398,7 +401,7 @@ public class RebaseCommand extends GitCommand<RebaseResult> {
 				}
 			}
 		}
-		return conflicts;
+		return success;
 	}
 
 	private void updateStashRef(ObjectId commitId, PersonIdent refLogIdent,
@@ -723,13 +726,15 @@ public class RebaseCommand extends GitCommand<RebaseResult> {
 			boolean lastStepIsForward) throws IOException, GitAPIException {
 		String headName = rebaseState.readFile(HEAD_NAME);
 		updateHead(headName, finalHead, upstreamCommit);
-		boolean stashConflicts = autoStashApply();
+		boolean unstashSuccessful = autoStashApply();
 		getRepository().autoGC(monitor);
 		FileUtils.delete(rebaseState.getDir(), FileUtils.RECURSIVE);
-		if (stashConflicts)
+		if (!unstashSuccessful) {
 			return RebaseResult.STASH_APPLY_CONFLICTS_RESULT;
-		if (lastStepIsForward || finalHead == null)
+		}
+		if (lastStepIsForward || finalHead == null) {
 			return RebaseResult.FAST_FORWARD_RESULT;
+		}
 		return RebaseResult.OK_RESULT;
 	}
 
@@ -1058,12 +1063,16 @@ public class RebaseCommand extends GitCommand<RebaseResult> {
 		String authorScript = toAuthorScript(author);
 		rebaseState.createFile(AUTHOR_SCRIPT, authorScript);
 		rebaseState.createFile(MESSAGE, commitToPick.getFullMessage());
-		ByteArrayOutputStream bos = new ByteArrayOutputStream();
-		try (DiffFormatter df = new DiffFormatter(bos)) {
-			df.setRepository(repo);
-			df.format(commitToPick.getParent(0), commitToPick);
+		if (commitToPick.getParentCount() > 0) {
+			ByteArrayOutputStream bos = new ByteArrayOutputStream();
+			try (DiffFormatter df = new DiffFormatter(bos)) {
+				df.setRepository(repo);
+				df.format(commitToPick.getParent(0), commitToPick);
+			}
+			rebaseState.createFile(PATCH, new String(bos.toByteArray(), UTF_8));
+		} else {
+			rebaseState.createFile(PATCH, ""); //$NON-NLS-1$
 		}
-		rebaseState.createFile(PATCH, new String(bos.toByteArray(), UTF_8));
 		rebaseState.createFile(STOPPED_SHA,
 				repo.newObjectReader()
 				.abbreviate(
@@ -1110,8 +1119,8 @@ public class RebaseCommand extends GitCommand<RebaseResult> {
 	private void popSteps(int numSteps) throws IOException {
 		if (numSteps == 0)
 			return;
-		List<RebaseTodoLine> todoLines = new LinkedList<>();
-		List<RebaseTodoLine> poppedLines = new LinkedList<>();
+		List<RebaseTodoLine> todoLines = new ArrayList<>();
+		List<RebaseTodoLine> poppedLines = new ArrayList<>();
 
 		for (RebaseTodoLine line : repo.readRebaseTodo(
 				rebaseState.getPath(GIT_REBASE_TODO), true)) {
@@ -1149,7 +1158,7 @@ public class RebaseCommand extends GitCommand<RebaseResult> {
 		if (!isInteractive() && walk.isMergedInto(upstream, headCommit))
 			return RebaseResult.UP_TO_DATE_RESULT;
 		else if (!isInteractive() && walk.isMergedInto(headCommit, upstream)) {
-			// head is already merged into upstream, fast-foward
+			// head is already merged into upstream, fast-forward
 			monitor.beginTask(MessageFormat.format(
 					JGitText.get().resettingHead,
 					upstreamCommit.getShortMessage()), ProgressMonitor.UNKNOWN);
@@ -1447,13 +1456,14 @@ public class RebaseCommand extends GitCommand<RebaseResult> {
 				throw new JGitInternalException(
 						JGitText.get().abortingRebaseFailed);
 			}
-			boolean stashConflicts = autoStashApply();
+			boolean unstashSuccessful = autoStashApply();
 			// cleanup the files
 			FileUtils.delete(rebaseState.getDir(), FileUtils.RECURSIVE);
 			repo.writeCherryPickHead(null);
 			repo.writeMergeHeads(null);
-			if (stashConflicts)
+			if (!unstashSuccessful) {
 				return RebaseResult.STASH_APPLY_CONFLICTS_RESULT;
+			}
 			return result;
 
 		} finally {

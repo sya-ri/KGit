@@ -5,8 +5,8 @@ package com.github.syari.kgit
 import org.eclipse.jgit.api.CommitCommand
 import org.eclipse.jgit.lib.CommitConfig
 import org.eclipse.jgit.lib.GpgConfig
-import org.eclipse.jgit.lib.GpgSigner
 import org.eclipse.jgit.lib.PersonIdent
+import org.eclipse.jgit.lib.Signer
 import org.eclipse.jgit.revwalk.RevCommit
 import org.eclipse.jgit.transport.CredentialsProvider
 import java.io.PrintStream
@@ -162,10 +162,10 @@ class KCommitCommand(asJ: CommitCommand) : KGitCommand<CommitCommand, RevCommit>
     }
 
     /**
-     * @see CommitCommand.setGpgSigner
+     * @see CommitCommand.setSigner
      */
-    fun setGpgSigner(signer: GpgSigner?) {
-        asJ.setGpgSigner(signer)
+    fun setSigner(signer: Signer?) {
+        asJ.setSigner(signer)
     }
 
     /**

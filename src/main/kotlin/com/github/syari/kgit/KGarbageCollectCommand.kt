@@ -33,6 +33,13 @@ class KGarbageCollectCommand(asJ: GarbageCollectCommand) : KGitCommand<GarbageCo
     }
 
     /**
+     * @see GarbageCollectCommand.setPackKeptObjects
+     */
+    fun setPackKeptObjects(packKeptObjects: Boolean) {
+        asJ.setPackKeptObjects(packKeptObjects)
+    }
+
+    /**
      * @see GarbageCollectCommand.setPreserveOldPacks
      */
     fun setPreserveOldPacks(preserveOldPacks: Boolean) {
