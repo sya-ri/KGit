@@ -5,7 +5,7 @@ kotlinter = "4.4.1"
 versions = "0.51.0"
 
 # Libraries
-jgit = "7.0.0.202409031743-r"
+jgit = "7.1.0.202411261347-r"
 
 [plugins]
 kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
