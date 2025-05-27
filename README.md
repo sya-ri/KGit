@@ -3,7 +3,7 @@
 [![maven-central](https://img.shields.io/maven-central/v/com.github.sya-ri/kgit)](https://search.maven.org/artifact/com.github.sya-ri/kgit)
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 
-KGit is Kotlin Wrapper Library of [JGit](https://eclipse.org/jgit).
+KGit is Kotlin Wrapper Library of [JGit](https://projects.eclipse.org/projects/technology.jgit).
 - Null Safety Methods
 - Command Settings Available Using Lambda Function (No Method Chain)
 - Support JGit features: `7.0.0.202409031743-r`
