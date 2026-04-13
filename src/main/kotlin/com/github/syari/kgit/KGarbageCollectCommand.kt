@@ -23,7 +23,9 @@ class KGarbageCollectCommand(asJ: GarbageCollectCommand) : KGitCommand<GarbageCo
     /**
      * @see GarbageCollectCommand.setExpire
      */
+    @Deprecated("Use setExpire(Instant?) instead")
     fun setExpire(expire: Date?) {
+        @Suppress("DEPRECATION")
         asJ.setExpire(expire)
     }
 
