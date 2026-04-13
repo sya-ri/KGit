@@ -1,8 +1,8 @@
 [versions]
 # Plugins
-kotlin = "2.0.20"
-kotlinter = "4.4.1"
-versions = "0.51.0"
+kotlin = "2.3.20"
+kotlinter = "5.4.2"
+versions = "0.53.0"
 
 # Libraries
 jgit = "7.6.0.202603022253-r"
