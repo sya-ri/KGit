@@ -47,6 +47,13 @@ class KInitCommand(private val asJ: InitCommand = InitCommand()) :
     }
 
     /**
+     * @see InitCommand.setRelativeDirs
+     */
+    fun setRelativeDirs(relativePaths: Boolean) {
+        asJ.setRelativeDirs(relativePaths)
+    }
+
+    /**
      * @see InitCommand.setFs
      */
     fun setFs(fs: FS?) {

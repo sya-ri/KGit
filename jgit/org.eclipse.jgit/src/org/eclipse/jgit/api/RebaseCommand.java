@@ -11,6 +11,9 @@
 package org.eclipse.jgit.api;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
+import static org.eclipse.jgit.api.MergeCommand.ConflictStyle.MERGE;
+import static org.eclipse.jgit.lib.ConfigConstants.CONFIG_KEY_CONFLICTSTYLE;
+import static org.eclipse.jgit.lib.ConfigConstants.CONFIG_MERGE_SECTION;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -18,6 +21,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.MessageFormat;
+import java.time.Instant;
+import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -29,6 +34,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.eclipse.jgit.annotations.NonNull;
+import org.eclipse.jgit.api.MergeCommand.ConflictStyle;
 import org.eclipse.jgit.api.RebaseResult.Status;
 import org.eclipse.jgit.api.ResetCommand.ResetType;
 import org.eclipse.jgit.api.errors.CheckoutConflictException;
@@ -217,6 +223,8 @@ public class RebaseCommand extends GitCommand<RebaseResult> {
 	private MergeStrategy strategy = MergeStrategy.RECURSIVE;
 
 	private ContentMergeStrategy contentStrategy;
+
+	private ConflictStyle conflictStyle;
 
 	private boolean preserveMerges = false;
 
@@ -555,6 +563,7 @@ public class RebaseCommand extends GitCommand<RebaseResult> {
 					.setReflogPrefix(REFLOG_PREFIX)
 					.setStrategy(strategy)
 					.setContentMergeStrategy(contentStrategy)
+						.setConflictStyle(getConflictStyle())
 					.call();
 				switch (cherryPickResult.getStatus()) {
 				case FAILED:
@@ -609,7 +618,8 @@ public class RebaseCommand extends GitCommand<RebaseResult> {
 							.setOurCommitName(ourCommitName)
 							.setReflogPrefix(REFLOG_PREFIX)
 							.setStrategy(strategy)
-							.setContentMergeStrategy(contentStrategy);
+							.setContentMergeStrategy(contentStrategy)
+							.setConflictStyle(getConflictStyle());
 					if (isMerge) {
 						pickCommand.setMainlineParentNumber(1);
 						// We write a MERGE_HEAD and later commit explicitly
@@ -647,6 +657,7 @@ public class RebaseCommand extends GitCommand<RebaseResult> {
 							.setProgressMonitor(monitor)
 							.setStrategy(strategy)
 							.setContentMergeStrategy(contentStrategy)
+							.setConflictStyle(getConflictStyle())
 							.setCommit(false);
 					for (int i = 1; i < commitToPick.getParentCount(); i++)
 						merge.include(newParents.get(i));
@@ -1037,6 +1048,8 @@ public class RebaseCommand extends GitCommand<RebaseResult> {
 				CommitCommand commit = git.commit();
 				commit.setMessage(rebaseState.readFile(MESSAGE));
 				commit.setAuthor(parseAuthor());
+				commit.setCleanupMode(
+						commitConfig.resolve(CleanupMode.DEFAULT, false));
 				return commit.call();
 			}
 		}
@@ -1696,6 +1709,25 @@ public class RebaseCommand extends GitCommand<RebaseResult> {
 	}
 
 	/**
+	 * Sets the conflict style to be used when formatting merge conflicts.
+	 *
+	 * @param conflictStyle
+	 *            a {@link org.eclipse.jgit.api.MergeCommand.ConflictStyle}
+	 * @return {@code this}
+	 * @since 7.6
+	 */
+	public RebaseCommand setConflictStyle(ConflictStyle conflictStyle) {
+		this.conflictStyle = conflictStyle;
+		return this;
+	}
+
+	private ConflictStyle getConflictStyle() {
+		return conflictStyle != null ? conflictStyle
+				: repo.getConfig().getEnum(CONFIG_MERGE_SECTION, null,
+						CONFIG_KEY_CONFLICTSTYLE, MERGE);
+	}
+
+	/**
 	 * Whether to preserve merges during rebase
 	 *
 	 * @param preserve
@@ -1835,23 +1867,26 @@ public class RebaseCommand extends GitCommand<RebaseResult> {
 
 		// the time is saved as <seconds since 1970> <timezone offset>
 		int timeStart = 0;
-		if (time.startsWith("@")) //$NON-NLS-1$
+		if (time.startsWith("@")) { //$NON-NLS-1$
 			timeStart = 1;
-		else
+		} else {
 			timeStart = 0;
-		long when = Long
-				.parseLong(time.substring(timeStart, time.indexOf(' '))) * 1000;
+		}
+		Instant when = Instant.ofEpochSecond(
+				Long.parseLong(time.substring(timeStart, time.indexOf(' '))));
 		String tzOffsetString = time.substring(time.indexOf(' ') + 1);
 		int multiplier = -1;
-		if (tzOffsetString.charAt(0) == '+')
+		if (tzOffsetString.charAt(0) == '+') {
 			multiplier = 1;
+		}
 		int hours = Integer.parseInt(tzOffsetString.substring(1, 3));
 		int minutes = Integer.parseInt(tzOffsetString.substring(3, 5));
 		// this is in format (+/-)HHMM (hours and minutes)
-		// we need to convert into minutes
-		int tz = (hours * 60 + minutes) * multiplier;
-		if (name != null && email != null)
+		ZoneOffset tz = ZoneOffset.ofHoursMinutes(hours * multiplier,
+				minutes * multiplier);
+		if (name != null && email != null) {
 			return new PersonIdent(name, email, when, tz);
+		}
 		return null;
 	}
 

@@ -18,6 +18,20 @@ class KAddCommand(asJ: AddCommand) : KGitCommand<AddCommand, DirCache?>(asJ) {
     }
 
     /**
+     * @see AddCommand.addFilepatterns
+     */
+    fun addFilepatterns(vararg patterns: String) {
+        asJ.addFilepatterns(*patterns)
+    }
+
+    /**
+     * @see AddCommand.addFilepatterns
+     */
+    fun addFilepatterns(patterns: Collection<String>) {
+        asJ.addFilepatterns(patterns)
+    }
+
+    /**
      * @see AddCommand.setWorkingTreeIterator
      */
     fun setWorkingTreeIterator(f: WorkingTreeIterator?) {
@@ -33,6 +47,16 @@ class KAddCommand(asJ: AddCommand) : KGitCommand<AddCommand, DirCache?>(asJ) {
             asJ.isUpdate = value
         }
         get() = asJ.isUpdate
+
+    /**
+     * @see AddCommand.setAll
+     * @see AddCommand.isAll
+     */
+    var isAll: Boolean
+        set(value) {
+            asJ.isAll = value
+        }
+        get() = asJ.isAll
 
     /**
      * @see AddCommand.setRenormalize

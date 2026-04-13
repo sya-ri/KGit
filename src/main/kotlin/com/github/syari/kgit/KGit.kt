@@ -208,6 +208,11 @@ class KGit(asJ: Git) :
     fun tagDelete(action: KDeleteTagCommand.() -> Unit = {}) = KDeleteTagCommand(asJ.tagDelete()).apply(action).call()
 
     /**
+     * @see Git.packRefs
+     */
+    fun packRefs(action: KPackRefsCommand.() -> Unit = {}) = KPackRefsCommand(asJ.packRefs()).apply(action).call()
+
+    /**
      * @see Git.submoduleAdd
      */
     fun submoduleAdd(action: KSubmoduleAddCommand.() -> Unit = {}) = KSubmoduleAddCommand(asJ.submoduleAdd()).apply(action).call()

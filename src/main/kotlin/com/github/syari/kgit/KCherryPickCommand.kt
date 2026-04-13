@@ -5,6 +5,7 @@ package com.github.syari.kgit
 import org.eclipse.jgit.api.CherryPickCommand
 import org.eclipse.jgit.api.CherryPickCommitMessageProvider
 import org.eclipse.jgit.api.CherryPickResult
+import org.eclipse.jgit.api.MergeCommand.ConflictStyle
 import org.eclipse.jgit.lib.AnyObjectId
 import org.eclipse.jgit.lib.ProgressMonitor
 import org.eclipse.jgit.lib.Ref
@@ -69,6 +70,13 @@ class KCherryPickCommand(asJ: CherryPickCommand) : KGitCommand<CherryPickCommand
      */
     fun setContentMergeStrategy(strategy: ContentMergeStrategy?) {
         asJ.setContentMergeStrategy(strategy)
+    }
+
+    /**
+     * @see CherryPickCommand.setConflictStyle
+     */
+    fun setConflictStyle(conflictStyle: ConflictStyle) {
+        asJ.setConflictStyle(conflictStyle)
     }
 
     /**

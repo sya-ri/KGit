@@ -3,7 +3,9 @@
 package com.github.syari.kgit
 
 import org.eclipse.jgit.api.GarbageCollectCommand
+import org.eclipse.jgit.lib.GcConfig
 import org.eclipse.jgit.lib.ProgressMonitor
+import java.time.Instant
 import java.util.Date
 import java.util.Properties
 
@@ -22,6 +24,13 @@ class KGarbageCollectCommand(asJ: GarbageCollectCommand) : KGitCommand<GarbageCo
      * @see GarbageCollectCommand.setExpire
      */
     fun setExpire(expire: Date?) {
+        asJ.setExpire(expire)
+    }
+
+    /**
+     * @see GarbageCollectCommand.setExpire
+     */
+    fun setExpire(expire: Instant?) {
         asJ.setExpire(expire)
     }
 
@@ -51,6 +60,13 @@ class KGarbageCollectCommand(asJ: GarbageCollectCommand) : KGitCommand<GarbageCo
      */
     fun setPrunePreserved(prunePreserved: Boolean) {
         asJ.setPrunePreserved(prunePreserved)
+    }
+
+    /**
+     * @see GarbageCollectCommand.setGcConfig
+     */
+    fun setGcConfig(gcConfig: GcConfig) {
+        asJ.setGcConfig(gcConfig)
     }
 
     /**

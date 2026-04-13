@@ -2,6 +2,7 @@
 
 package com.github.syari.kgit
 
+import org.eclipse.jgit.api.MergeCommand.ConflictStyle
 import org.eclipse.jgit.api.RebaseCommand
 import org.eclipse.jgit.api.RebaseResult
 import org.eclipse.jgit.lib.AnyObjectId
@@ -89,6 +90,13 @@ class KRebaseCommand(asJ: RebaseCommand) : KGitCommand<RebaseCommand, RebaseResu
      */
     fun setContentMergeStrategy(strategy: ContentMergeStrategy?) {
         asJ.setContentMergeStrategy(strategy)
+    }
+
+    /**
+     * @see RebaseCommand.setConflictStyle
+     */
+    fun setConflictStyle(conflictStyle: ConflictStyle) {
+        asJ.setConflictStyle(conflictStyle)
     }
 
     /**

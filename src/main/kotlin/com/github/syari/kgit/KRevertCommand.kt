@@ -2,6 +2,7 @@
 
 package com.github.syari.kgit
 
+import org.eclipse.jgit.api.MergeCommand.ConflictStyle
 import org.eclipse.jgit.api.MergeResult
 import org.eclipse.jgit.api.RevertCommand
 import org.eclipse.jgit.lib.AnyObjectId
@@ -76,5 +77,12 @@ class KRevertCommand(asJ: RevertCommand) : KGitCommand<RevertCommand, RevCommit?
      */
     fun setInsertChangeId(insertChangeId: Boolean) {
         asJ.setInsertChangeId(insertChangeId)
+    }
+
+    /**
+     * @see RevertCommand.setConflictStyle
+     */
+    fun setConflictStyle(conflictStyle: ConflictStyle) {
+        asJ.setConflictStyle(conflictStyle)
     }
 }

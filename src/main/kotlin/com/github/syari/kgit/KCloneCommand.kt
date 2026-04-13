@@ -52,6 +52,13 @@ class KCloneCommand(asJ: CloneCommand = CloneCommand()) :
     }
 
     /**
+     * @see CloneCommand.setRelativePaths
+     */
+    fun setRelativePaths(relativePaths: Boolean) {
+        asJ.setRelativePaths(relativePaths)
+    }
+
+    /**
      * @see CloneCommand.setFs
      */
     fun setFs(fs: FS?) {

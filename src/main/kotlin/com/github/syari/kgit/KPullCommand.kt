@@ -3,6 +3,7 @@
 package com.github.syari.kgit
 
 import org.eclipse.jgit.api.MergeCommand
+import org.eclipse.jgit.api.MergeCommand.ConflictStyle
 import org.eclipse.jgit.api.PullCommand
 import org.eclipse.jgit.api.PullResult
 import org.eclipse.jgit.lib.BranchConfig.BranchRebaseMode
@@ -59,6 +60,13 @@ class KPullCommand(asJ: PullCommand) : KTransportCommand<PullCommand, PullResult
      */
     fun setContentMergeStrategy(strategy: ContentMergeStrategy?) {
         asJ.setContentMergeStrategy(strategy)
+    }
+
+    /**
+     * @see PullCommand.setConflictStyle
+     */
+    fun setConflictStyle(conflictStyle: ConflictStyle) {
+        asJ.setConflictStyle(conflictStyle)
     }
 
     /**

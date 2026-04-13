@@ -3,6 +3,7 @@
 package com.github.syari.kgit
 
 import org.eclipse.jgit.api.MergeCommand
+import org.eclipse.jgit.api.MergeCommand.ConflictStyle
 import org.eclipse.jgit.api.MergeResult
 import org.eclipse.jgit.lib.AnyObjectId
 import org.eclipse.jgit.lib.ProgressMonitor
@@ -23,6 +24,13 @@ class KMergeCommand(asJ: MergeCommand) : KGitCommand<MergeCommand, MergeResult>(
      */
     fun setContentMergeStrategy(strategy: ContentMergeStrategy?) {
         asJ.setContentMergeStrategy(strategy)
+    }
+
+    /**
+     * @see MergeCommand.setConflictStyle
+     */
+    fun setConflictStyle(conflictStyle: ConflictStyle) {
+        asJ.setConflictStyle(conflictStyle)
     }
 
     /**

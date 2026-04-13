@@ -64,4 +64,11 @@ class KDescribeCommand(asJ: DescribeCommand) : KGitCommand<DescribeCommand, Stri
     fun setMatch(vararg patterns: String) {
         asJ.setMatch(*patterns)
     }
+
+    /**
+     * @see DescribeCommand.setExclude
+     */
+    fun setExclude(vararg patterns: String) {
+        asJ.setExclude(*patterns)
+    }
 }

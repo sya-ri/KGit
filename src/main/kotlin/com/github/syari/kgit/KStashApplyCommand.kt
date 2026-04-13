@@ -2,6 +2,7 @@
 
 package com.github.syari.kgit
 
+import org.eclipse.jgit.api.MergeCommand.ConflictStyle
 import org.eclipse.jgit.api.StashApplyCommand
 import org.eclipse.jgit.lib.ObjectId
 import org.eclipse.jgit.merge.ContentMergeStrategy
@@ -44,6 +45,13 @@ class KStashApplyCommand(asJ: StashApplyCommand) : KGitCommand<StashApplyCommand
      */
     fun setContentMergeStrategy(strategy: ContentMergeStrategy?) {
         asJ.setContentMergeStrategy(strategy)
+    }
+
+    /**
+     * @see StashApplyCommand.setConflictStyle
+     */
+    fun setConflictStyle(conflictStyle: ConflictStyle) {
+        asJ.setConflictStyle(conflictStyle)
     }
 
     /**

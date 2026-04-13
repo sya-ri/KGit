@@ -11,10 +11,15 @@
  */
 package org.eclipse.jgit.api;
 
+import static org.eclipse.jgit.api.MergeCommand.ConflictStyle.MERGE;
+import static org.eclipse.jgit.lib.ConfigConstants.CONFIG_KEY_CONFLICTSTYLE;
+import static org.eclipse.jgit.lib.ConfigConstants.CONFIG_MERGE_SECTION;
+
 import java.io.IOException;
 import java.text.MessageFormat;
 
 import org.eclipse.jgit.annotations.Nullable;
+import org.eclipse.jgit.api.MergeCommand.ConflictStyle;
 import org.eclipse.jgit.api.MergeCommand.FastForwardMode;
 import org.eclipse.jgit.api.MergeCommand.FastForwardMode.Merge;
 import org.eclipse.jgit.api.RebaseCommand.Operation;
@@ -71,6 +76,8 @@ public class PullCommand extends TransportCommand<PullCommand, PullResult> {
 	private MergeStrategy strategy = MergeStrategy.RECURSIVE;
 
 	private ContentMergeStrategy contentStrategy;
+
+	private ConflictStyle conflictStyle;
 
 	private TagOpt tagOption;
 
@@ -361,6 +368,7 @@ public class PullCommand extends TransportCommand<PullCommand, PullResult> {
 					.setOperation(Operation.BEGIN)
 					.setStrategy(strategy)
 					.setContentMergeStrategy(contentStrategy)
+					.setConflictStyle(getConflictStyle())
 					.setPreserveMerges(
 							pullRebaseMode == BranchRebaseMode.MERGES)
 					.call();
@@ -371,6 +379,7 @@ public class PullCommand extends TransportCommand<PullCommand, PullResult> {
 					.setProgressMonitor(monitor)
 					.setStrategy(strategy)
 					.setContentMergeStrategy(contentStrategy)
+					.setConflictStyle(getConflictStyle())
 					.setFastForward(getFastForwardMode()).call();
 			monitor.update(1);
 			result = new PullResult(fetchRes, remote, mergeRes);
@@ -464,6 +473,25 @@ public class PullCommand extends TransportCommand<PullCommand, PullResult> {
 	}
 
 	/**
+	 * Sets the conflict style to be used when formatting merge conflicts.
+	 *
+	 * @param conflictStyle
+	 *            a {@link org.eclipse.jgit.api.MergeCommand.ConflictStyle}
+	 * @return {@code this}
+	 * @since 7.6
+	 */
+	public PullCommand setConflictStyle(ConflictStyle conflictStyle) {
+		this.conflictStyle = conflictStyle;
+		return this;
+	}
+
+	private ConflictStyle getConflictStyle() {
+		return conflictStyle != null ? conflictStyle
+				: repo.getConfig().getEnum(CONFIG_MERGE_SECTION, null,
+						CONFIG_KEY_CONFLICTSTYLE, MERGE);
+	}
+
+	/**
 	 * Set the specification of annotated tag behavior during fetch
 	 *
 	 * @param tagOpt
@@ -533,9 +561,9 @@ public class PullCommand extends TransportCommand<PullCommand, PullResult> {
 			Config config) {
 		BranchRebaseMode mode = config.getEnum(BranchRebaseMode.values(),
 				ConfigConstants.CONFIG_BRANCH_SECTION,
-				branchName, ConfigConstants.CONFIG_KEY_REBASE, null);
+				branchName, ConfigConstants.CONFIG_KEY_REBASE);
 		if (mode == null) {
-			mode = config.getEnum(BranchRebaseMode.values(),
+			mode = config.getEnum(
 					ConfigConstants.CONFIG_PULL_SECTION, null,
 					ConfigConstants.CONFIG_KEY_REBASE, BranchRebaseMode.NONE);
 		}
@@ -549,7 +577,7 @@ public class PullCommand extends TransportCommand<PullCommand, PullResult> {
 		Config config = repo.getConfig();
 		Merge ffMode = config.getEnum(Merge.values(),
 				ConfigConstants.CONFIG_PULL_SECTION, null,
-				ConfigConstants.CONFIG_KEY_FF, null);
+				ConfigConstants.CONFIG_KEY_FF);
 		return ffMode != null ? FastForwardMode.valueOf(ffMode) : null;
 	}
 }

@@ -12,6 +12,7 @@ package org.eclipse.jgit.api;
 import java.io.IOException;
 import java.text.MessageFormat;
 import java.text.ParseException;
+import java.time.Instant;
 import java.util.Date;
 import java.util.Properties;
 import java.util.concurrent.ExecutionException;
@@ -25,6 +26,7 @@ import org.eclipse.jgit.internal.storage.file.FileRepository;
 import org.eclipse.jgit.internal.storage.file.GC;
 import org.eclipse.jgit.internal.storage.file.GC.RepoStatistics;
 import org.eclipse.jgit.lib.ConfigConstants;
+import org.eclipse.jgit.lib.GcConfig;
 import org.eclipse.jgit.lib.ProgressMonitor;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.lib.StoredConfig;
@@ -59,11 +61,13 @@ public class GarbageCollectCommand extends GitCommand<Properties> {
 
 	private ProgressMonitor monitor;
 
-	private Date expire;
+	private Instant expire;
 
 	private PackConfig pconfig;
 
 	private Boolean packKeptObjects;
+
+	private GcConfig gcConfig;
 
 	/**
 	 * Constructor for GarbageCollectCommand.
@@ -74,6 +78,7 @@ public class GarbageCollectCommand extends GitCommand<Properties> {
 	protected GarbageCollectCommand(Repository repo) {
 		super(repo);
 		pconfig = new PackConfig(repo);
+		gcConfig = repo.getConfig().get(GcConfig.KEY);
 	}
 
 	/**
@@ -98,8 +103,29 @@ public class GarbageCollectCommand extends GitCommand<Properties> {
 	 * @param expire
 	 *            minimal age of objects to be pruned.
 	 * @return this instance
+	 * @deprecated use {@link #setExpire(Instant)} instead
 	 */
+	@Deprecated(since = "7.2")
 	public GarbageCollectCommand setExpire(Date expire) {
+		if (expire != null) {
+			this.expire = expire.toInstant();
+		}
+		return this;
+	}
+
+	/**
+	 * During gc() or prune() each unreferenced, loose object which has been
+	 * created or modified after <code>expire</code> will not be pruned. Only
+	 * older objects may be pruned. If set to null then every object is a
+	 * candidate for pruning. Use {@link org.eclipse.jgit.util.GitTimeParser} to
+	 * parse time formats used by git gc.
+	 *
+	 * @param expire
+	 *            minimal age of objects to be pruned.
+	 * @return this instance
+	 * @since 7.2
+	 */
+	public GarbageCollectCommand setExpire(Instant expire) {
 		this.expire = expire;
 		return this;
 	}
@@ -108,8 +134,8 @@ public class GarbageCollectCommand extends GitCommand<Properties> {
 	 * Whether to use aggressive mode or not. If set to true JGit behaves more
 	 * similar to native git's "git gc --aggressive". If set to
 	 * <code>true</code> compressed objects found in old packs are not reused
-	 * but every object is compressed again. Configuration variables
-	 * pack.window and pack.depth are set to 250 for this GC.
+	 * but every object is compressed again. Configuration variables pack.window
+	 * and pack.depth are set to 250 for this GC.
 	 *
 	 * @since 3.6
 	 * @param aggressive
@@ -178,6 +204,19 @@ public class GarbageCollectCommand extends GitCommand<Properties> {
 		return this;
 	}
 
+	/**
+	 * Set the gc configuration
+	 *
+	 * @param gcConfig
+	 *            the gc configuration
+	 * @return {@code this}
+	 * @since 7.6
+	 */
+	public GarbageCollectCommand setGcConfig(GcConfig gcConfig) {
+		this.gcConfig = gcConfig;
+		return this;
+	}
+
 	@Override
 	public Properties call() throws GitAPIException {
 		checkCallable();
@@ -192,6 +231,7 @@ public class GarbageCollectCommand extends GitCommand<Properties> {
 				if (this.packKeptObjects != null) {
 					gc.setPackKeptObjects(packKeptObjects.booleanValue());
 				}
+				gc.setGcConfig(gcConfig);
 				try {
 					gc.gc().get();
 					return toProperties(gc.getStatistics());
