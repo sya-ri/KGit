@@ -45,7 +45,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.sya-ri:kgit:1.1.0'
+    implementation 'com.github.sya-ri:kgit:1.2.0'
 }
 ```
 
@@ -57,7 +57,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.sya-ri:kgit:1.1.0")
+    implementation("com.github.sya-ri:kgit:1.2.0")
 }
 ```
 
