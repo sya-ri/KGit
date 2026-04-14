@@ -1,9 +1,13 @@
+import com.vanniktech.maven.publish.JavadocJar
+import com.vanniktech.maven.publish.KotlinJvm
+
 plugins {
     alias(libs.plugins.kotlin)
     alias(libs.plugins.kotlinter)
     alias(libs.plugins.versions)
-    `maven-publish`
-    signing
+    alias(libs.plugins.dokka)
+    alias(libs.plugins.dokka.javadoc)
+    alias(libs.plugins.mavenPublish)
 }
 
 group = "com.github.syari.kgit"
@@ -19,63 +23,37 @@ dependencies {
     api(libs.jgit)
 }
 
-val sourceJar by tasks.registering(Jar::class) {
-    archiveClassifier.set("sources")
-    from(sourceSets["main"].allSource)
-}
-
-publishing {
-    repositories {
-        maven {
-            url = uri(
-                if (version.toString().endsWith("SNAPSHOT")) {
-                    "https://oss.sonatype.org/content/repositories/snapshots"
-                } else {
-                    "https://oss.sonatype.org/service/local/staging/deploy/maven2"
-                },
-            )
-            credentials {
-                username = properties["sonatypeUsername"].toString()
-                password = properties["sonatypePassword"].toString()
+mavenPublishing {
+    publishToMavenCentral()
+    signAllPublications()
+    coordinates("com.github.sya-ri", "kgit", version.toString())
+    configure(
+        KotlinJvm(
+            javadocJar = JavadocJar.Dokka("dokkaGeneratePublicationJavadoc"),
+            sourcesJar = true,
+        ),
+    )
+    pom {
+        packaging = "pom"
+        name.set("KGit")
+        description.set("Kotlin Wrapper Library of JGit")
+        inceptionYear.set("2020")
+        url.set("https://github.com/sya-ri/KGit")
+        licenses {
+            license {
+                name.set("Eclipse Public License 2.0")
+                url.set("https://www.eclipse.org/legal/epl-2.0/")
             }
         }
-    }
-    publications {
-        register<MavenPublication>("maven") {
-            groupId = "com.github.sya-ri"
-            artifactId = "kgit"
-            from(components["kotlin"])
-            artifact(sourceJar.get())
-            pom {
-                packaging = "pom"
-                name.set("KGit")
-                description.set("Kotlin Wrapper Library of JGit")
-                url.set("https://github.com/sya-ri/KGit")
-                licenses {
-                    license {
-                        name.set("Eclipse Public License 2.0")
-                        url.set("https://www.eclipse.org/legal/epl-2.0/")
-                    }
-                }
-                developers {
-                    developer {
-                        id.set("sya-ri")
-                        name.set("sya-ri")
-                        email.set("contact@s7a.dev")
-                    }
-                }
-                scm {
-                    url.set("https://github.com/sya-ri/KGit.git")
-                }
+        developers {
+            developer {
+                id.set("sya-ri")
+                name.set("sya-ri")
+                email.set("contact@s7a.dev")
             }
         }
+        scm {
+            url.set("https://github.com/sya-ri/KGit.git")
+        }
     }
-}
-
-signing {
-    val key = properties["signingKey"]?.toString()?.replace("\\n", "\n")
-    val password = properties["signingPassword"]?.toString()
-
-    useInMemoryPgpKeys(key, password)
-    sign(publishing.publications["maven"])
 }

@@ -3,6 +3,8 @@
 kotlin = "2.3.20"
 kotlinter = "5.4.2"
 versions = "0.53.0"
+dokka = "2.1.0"
+mavenPublish = "0.35.0"
 
 # Libraries
 jgit = "7.6.0.202603022253-r"
@@ -11,6 +13,9 @@ jgit = "7.6.0.202603022253-r"
 kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlinter = { id = "org.jmailen.kotlinter", version.ref = "kotlinter" }
 versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }
+dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
+dokka-javadoc = { id = "org.jetbrains.dokka-javadoc", version.ref = "dokka" }
+mavenPublish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }
 
 [libraries]
 jgit = { group = "org.eclipse.jgit", name = "org.eclipse.jgit", version.ref = "jgit" }
