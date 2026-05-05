@@ -2,7 +2,7 @@
 # Plugins
 kotlin = "2.3.20"
 kotlinter = "5.4.2"
-versions = "0.53.0"
+versions = "0.54.0"
 dokka = "2.1.0"
 mavenPublish = "0.35.0"
 
