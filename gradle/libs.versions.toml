@@ -1,6 +1,6 @@
 [versions]
 # Plugins
-kotlin = "2.3.20"
+kotlin = "2.3.21"
 kotlinter = "5.4.2"
 versions = "0.53.0"
 dokka = "2.1.0"
