@@ -7,7 +7,7 @@ dokka = "2.1.0"
 mavenPublish = "0.35.0"
 
 # Libraries
-jgit = "7.6.0.202603022253-r"
+jgit = "7.7.0.202606012155-r"
 
 [plugins]
 kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
