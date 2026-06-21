@@ -6,7 +6,7 @@
 KGit is Kotlin Wrapper Library of [JGit](https://projects.eclipse.org/projects/technology.jgit).
 - Null Safety Methods
 - Command Settings Available Using Lambda Function (No Method Chain)
-- Support JGit features: `7.6.0.202603022253-r`
+- Support JGit features: `7.7.0.202606012155-r`
 
 ## Examples
 
@@ -75,7 +75,7 @@ git clone "https://eclipse.gerrithub.io/eclipse-jgit/jgit" jgit-src
 3. Check out the tag that matches the Maven Central version exactly. For example:
 
 ```bash
-git -C jgit-src checkout v7.6.0.202603022253-r
+git -C jgit-src checkout v7.7.0.202606012155-r
 ```
 
 4. Sync only `jgit-src/org.eclipse.jgit/src/org/eclipse/jgit/api/*Command.java` into `jgit/org.eclipse.jgit/src/org/eclipse/jgit/api/`.
