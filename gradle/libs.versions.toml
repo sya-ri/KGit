@@ -4,7 +4,7 @@ kotlin = "2.4.0"
 kotlinter = "5.5.0"
 versions = "0.54.0"
 dokka = "2.2.0"
-mavenPublish = "0.35.0"
+mavenPublish = "0.37.0"
 
 # Libraries
 jgit = "7.7.0.202606012155-r"
