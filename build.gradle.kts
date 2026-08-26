@@ -1,5 +1,7 @@
 import com.vanniktech.maven.publish.JavadocJar
 import com.vanniktech.maven.publish.KotlinJvm
+import com.vanniktech.maven.publish.SourcesJar
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.kotlin)
@@ -23,6 +25,17 @@ dependencies {
     api(libs.jgit)
 }
 
+kotlin {
+    compilerOptions {
+        jvmTarget = JvmTarget.fromTarget("17")
+    }
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
 mavenPublishing {
     publishToMavenCentral()
     signAllPublications()
@@ -30,7 +43,7 @@ mavenPublishing {
     configure(
         KotlinJvm(
             javadocJar = JavadocJar.Dokka("dokkaGeneratePublicationJavadoc"),
-            sourcesJar = true,
+            sourcesJar = SourcesJar.Sources(),
         ),
     )
     pom {
