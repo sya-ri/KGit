@@ -1,18 +1,18 @@
 [versions]
 # Plugins
-kotlin = "2.4.0"
-kotlinter = "5.5.0"
-versions = "0.54.0"
+kotlin = "2.4.10"
+kotlinter = "5.7.0"
+versions = "0.61.0"
 dokka = "2.2.0"
-mavenPublish = "0.35.0"
+mavenPublish = "0.37.0"
 
 # Libraries
-jgit = "7.7.0.202606012155-r"
+jgit = "7.7.1.202607240634-r"
 
 [plugins]
 kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlinter = { id = "org.jmailen.kotlinter", version.ref = "kotlinter" }
-versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }
+versions = { id = "io.github.ben-manes.versions", version.ref = "versions" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 dokka-javadoc = { id = "org.jetbrains.dokka-javadoc", version.ref = "dokka" }
 mavenPublish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }
